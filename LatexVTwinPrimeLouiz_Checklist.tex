@@ -1,0 +1,452 @@
+\documentclass[11pt]{article}
+
+% ---------- Packages ----------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{paperwidth=14cm,paperheight=22cm,top=2cm,bottom=2cm,left=1.6cm,right=1.6cm}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    pdftitle={A disproof of the Twin Primes conjecture proving also that there are no Siegel Zeros},
+    pdfauthor={Akram Louiz}
+}
+\usepackage{enumitem}
+\emergencystretch=2em
+
+% ---------- Title / Author ----------
+\title{\textbf{A disproof of the Twin Primes conjecture proving also that there are no Siegel Zeros}}
+\author{Akram Louiz \\[2pt]
+\small Independent researcher, Settat, Morocco \\
+\small (postal address for reprints: Settat, Morocco) \\
+\small \href{mailto:louiz.akram@gmail.com}{louiz.akram@gmail.com}}
+\date{}
+
+% Author information for the check-list (reprint address and e-mail)
+% Submission date: change here if needed
+\newcommand{\submissiondate}{October 16, 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent Motivated by the earlier successful disproof of the Collatz conjecture, I present a new short article that follows a new approach in order to disprove the ``Twin Primes conjecture''. Disproving this conjecture would be a major event for number theory and the theory of prime distribution, since such a disproof also implies that there are no Siegel zeros, a result of interest even to famous mathematicians. Hence, this article awaits the criticism and judgment of number theorists before any acceptance by the scientific community.
+\end{abstract}
+
+\medskip
+\noindent\textbf{2000 Mathematics Subject Classification:} 11N05, 11N35, 11M20.
+
+\smallskip
+\noindent\textbf{Keywords and phrases:} primes, twin primes, upper bound, infinity, conjecture, disproof, Siegel zeros.
+
+\smallskip
+\noindent\textbf{Submission date:} \submissiondate.
+
+\section{Introduction}
+
+After the successful disproof of the Collatz conjecture \cite{ref1}, efforts were made to treat other famous conjectures, such as the ``Twin Primes conjecture''. However, the previous work in this purpose \cite{ref2} did not give sufficient results and was useful only for reconsidering the asymptotic numbers related to sieve theory, which may be promising for other research \cite{ref3}.
+
+The ``Twin Primes conjecture'' asks whether there are infinitely many twin primes.
+
+The correctness of this conjecture implies also that there are pairs of twin primes tending to infinity \cite{ref4,ref5}.
+
+The present short article disproves the ``Twin Primes conjecture'' by following a new approach regarding the distance between pairs of twin primes and by using the upper bound for the number of twin primes up to $y$, which is conventionally denoted by $\pi_2(y)$. We recall that this upper bound was proved by Professor Viggo Brun in one of his famous works \cite{ref4,ref5}.
+
+As a direct consequence of this disproof, we conclude that there are no Siegel zeros thanks to the theorem of Heath-Brown \cite{ref6}. This result therefore has an extraordinary impact on analytic number theory, prime distribution theory and on quadratic Dirichlet L-functions.
+
+We start our approach by deriving a useful equation regarding the sum of pairs of twin primes.
+
+Let us consider that $X$ is a strictly positive natural number with $X>5$. \hfill (1)
+
+Let us consider that $p$ is a prime number with $p>5$. \hfill (2)
+
+Let us consider that $p$ and $p-2$ are twin primes. \hfill (3)
+
+We also consider that:
+\begin{equation}
+X = (p-2) + Y.
+\end{equation}
+
+Thus, we first have:
+\begin{equation}
+X \times p = (p-2)\times p + Y \times p.
+\end{equation}
+
+Let us define the strictly positive natural numbers $j_i$ and $k_i$ such that $j_{i+1} = j_i + k_i$, where $i$ is any strictly positive natural number and such that:
+\begin{equation}
+(p-2)\times p = (6 j_1 - 1)(6 j_1 + 1) = 36 j_1^2 - 1.
+\end{equation}
+
+Furthermore, we know that all the primes bigger than $3$ are of the form $6j+1$ or $6j-1$ where $j$ is a strictly positive natural number. \hfill (7)
+
+Let us consider also that the numbers: $p + 6\sum_{i=1}^{N} k_i$ and $p - 2 + 6\sum_{i=1}^{N} k_i$ are always a pair of twin primes for any strictly positive natural number $N$.
+
+We obtain a second equation:
+\begin{equation}
+X \times (p + 6k_1) = \big((p+6k_1)-2\big)(p+6k_1) + Y(p+6k_1) - 6k_1(p+6k_1).
+\end{equation}
+
+We consider in the following proofs that the numbers $k_i$ have exact values but may tend to infinity.
+
+We remark that:
+\begin{equation}
+\begin{aligned}\big((p+6k_1)-2\big)(p+6k_1) &= (6j_1+6k_1-1)(6j_1+6k_1+1)\\ &= (6j_2-1)(6j_2+1) = 36 j_2^2 - 1.\end{aligned}
+\end{equation}
+
+We also have the following third equation:
+\begin{equation}
+\begin{aligned}
+X\times(p+6k_1+6k_2) = {}& \big((p+6k_1+6k_2)-2\big)(p+6k_1+6k_2) \\
+& + Y(p+6k_1+6k_2) \\
+& - (6k_1+6k_2)(p+6k_1+6k_2).
+\end{aligned}
+\end{equation}
+
+We remark similarly that:
+\begin{equation}
+\big((p+6k_1+6k_2)-2\big)(p+6k_1+6k_2) = 36 j_3^2 - 1.
+\end{equation}
+
+If we make a sum of $N$ equations calculated similarly by adding the numbers $6k_i$, we obtain the following equation:
+\begin{equation}
+\begin{aligned}
+X\times\Big(Np + 6\sum_{i=1}^{N-1}(N-i)k_i\Big) = {}& 36\sum_{i=1}^{N} j_i^2 - N \\
+& + Y\Big(Np + 6\sum_{i=1}^{N-1}(N-i)k_i\Big) \\
+& - 6p\sum_{i=1}^{N-1}(N-i)k_i \\
+& - 36\sum_{i=1}^{N-1}\Big(\sum_{L=1}^{i} k_L\Big)^2 .
+\end{aligned}
+\end{equation}
+
+We conclude that:
+\begin{equation}
+X = \frac{36\Big(\sum_{i=1}^{N} j_i^2 - \sum_{i=1}^{N-1}\big(\sum_{L=1}^{i}k_L\big)^2\Big) - N + Np^2}{Np + 6\sum_{i=1}^{N-1}(N-i)k_i} - p + Y.
+\end{equation}
+
+We remark that:
+\begin{equation}
+\frac{36\Big(\sum_{i=1}^{N} j_i^2 - \sum_{i=1}^{N-1}\big(\sum_{L=1}^{i}k_L\big)^2\Big) - N + Np^2}{Np + 6\sum_{i=1}^{N-1}(N-i)k_i} - p = p-2.
+\end{equation}
+
+And thus, we have:
+\begin{equation}
+\begin{aligned}36\Big(\sum_{i=1}^{N} j_i^2 - \sum_{i=1}^{N-1}\big(\sum_{L=1}^{i}k_L\big)^2\Big) = {}& 2(p-1)\Big(Np + 6\sum_{i=1}^{N-1}(N-i)k_i\Big)\\ & + N - Np^2.\end{aligned}
+\end{equation}
+
+Since $(p-1)^2 = 36 j_1^2$ and after simplification, we get: \hfill (16)
+\begin{equation}
+36\Big(\sum_{i=1}^{N} j_i^2 - \sum_{i=1}^{N-1}\big(\sum_{L=1}^{i}k_L\big)^2\Big) = 36 j_1^2 N + 72 j_1 \sum_{i=1}^{N-1}(N-i)k_i.
+\end{equation}
+
+Thus, we get the following important equation:
+\begin{equation}
+\sum_{i=2}^{N} j_i^2 = (N-1)j_1^2 + 2j_1\sum_{i=1}^{N-1}(N-i)k_i + \sum_{i=1}^{N-1}\Big(\sum_{L=1}^{i}k_L\Big)^2.
+\end{equation}
+
+We have also: $j_{i+1}-j_i = k_i$, consequently: $\sum_{L=1}^{i} k_L = j_{i+1} - j_1$. \hfill (19)
+
+And thus:
+\begin{equation}
+\sum_{i=1}^{N-1}\Big(\sum_{L=1}^{i}k_L\Big)^2 = \sum_{i=1}^{N-1}(j_{i+1}-j_1)^2 = \sum_{i=2}^{N}(j_i-j_1)^2.
+\end{equation}
+
+Consequently:
+\begin{equation}
+\begin{aligned}\sum_{i=2}^{N} j_i^2 - \sum_{i=1}^{N-1}\Big(\sum_{L=1}^{i}k_L\Big)^2 &= \sum_{i=2}^{N}\big(j_i^2-(j_i-j_1)^2\big) \\ &= \sum_{i=2}^{N}\big(2j_1 j_i - j_1^2\big) \\ &= 2j_1\sum_{i=2}^{N} j_i - \sum_{i=2}^{N} j_1^2.\end{aligned}
+\end{equation}
+
+And thus:
+\begin{equation}
+\sum_{i=2}^{N} j_i^2 - \sum_{i=1}^{N-1}\Big(\sum_{L=1}^{i}k_L\Big)^2 = 2j_1\sum_{i=2}^{N} j_i - (N-1)j_1^2.
+\end{equation}
+
+Consequently, we get the following equation:
+\begin{equation}
+\sum_{i=2}^{N} j_i = (N-1)j_1 + \sum_{i=1}^{N-1}(N-i)k_i.
+\end{equation}
+
+We consider in all this article that the cumulative chain above is a single cumulative chain that can gather all the twin primes bigger than $3$ and we also consider that $j_1$ always has a finite value. Furthermore, one may think that the twin primes should be represented by more than one cumulative chain. However, we recall that the numbers $k_i$ have exact values but may tend to infinity in the proofs of this article, where $j_1$ has a finite value, and that all the primes bigger than $3$ are of the form $6j+1$ or $6j-1$, where $j$ is a strictly positive natural number. Thus, all these cumulative chains can be merged into one larger single cumulative chain, which is the chain used in the proofs of this article:
+\begin{equation}
+\sum_{i=2}^{N} j_i = (N-1)j_1 + \sum_{i=1}^{N-1}(N-i)k_i.
+\end{equation}
+
+We can verify the same cumulative chain differently as follows:
+\begin{equation}
+\begin{aligned}\sum_{i=1}^{N} j_i &= j_1 + (j_1+k_1) + (j_1+k_1+k_2) + \cdots \\ &\quad + \Big(j_1+\sum_{i=1}^{N-1}k_i\Big) = N j_1 + \sum_{i=1}^{N-1}(N-i)k_i.\end{aligned}
+\end{equation}
+
+\textbf{Important Remark:}
+
+We cannot have three consecutive odd numbers bigger than $3$ that are all prime, because one of these three numbers is divisible by $3$. This is the reason why the cumulative chain above counts exactly $N$, which is the number of all the numbers $j_i$ and also the number of pairs of twin primes. However, in Polignac's conjecture with a difference $n>2$, we can have three or more consecutive primes with the same fixed difference $n$. Hence, in this case, at least one of these primes, $p_i = q$, plays two roles corresponding to two numbers $j_i$ and $j_{i+1}$ and should satisfy:
+\begin{equation}
+\begin{aligned}q &= 6j_i+1 = 6j_{i+1}-1, \quad\text{hence:}\quad j_{i+1}-j_i = \frac{2}{6},\\ &\text{consequently}\quad k_i = \frac{1}{3} \quad\text{with}\quad p_{i+1} = q+n.\end{aligned}
+\end{equation}
+
+This means that we have:
+\begin{equation}
+p_{i+2} = q + 6k_i = q+2
+\end{equation}
+and this contradicts the fact that $p_{i+1} = q+n$. \hfill (26)
+
+We conclude that the approach of this article cannot prove, for Polignac's conjecture with a difference $n>2$, the existence of a cumulative chain similar to the one above that counts exactly $N$, the number of all the numbers $j_i$, which is also the number of primes of difference $n>2$.
+
+This problem cannot occur in the cumulative chain above for the twin primes conjecture, where $n=2$, since we have always $p_{i+2} > q+4$ with $p_{i+1} = q+2$. \hfill (27)
+
+Furthermore, in the cumulative chain above, we proved that the number $N$ of pairs of twin primes can be counted exactly, since each twin prime $p_i$ plays a unique role corresponding to a unique number $j_i$. This characteristic of twin primes will be very important when using an inequality of Professor Viggo Brun \cite{ref4,ref5} in the proof of this article, since it allows a unique strict order of the numbers $j_i$ after fixing the indices $i$ in the cumulative chain of this article.
+
+
+\section{Considering a difference $H$ bigger than the values of $k_i$, and the consequences for the Twin Primes conjecture}
+
+We remark that:
+\begin{equation}
+\frac{\sum_{i=2}^{N} j_i}{N(N-1)} = \frac{j_1}{N} + \frac{\sum_{i=1}^{N-1}(N-i)k_i}{N(N-1)}.
+\end{equation}
+
+And we have:
+\begin{equation}
+\sum_{i=1}^{N-1}(N-i)k_i \leq \frac{N(N-1)}{2}\, k_{\max}, \quad\text{with}\quad k_{\max} = \max_{i\leq N}\{j_i-j_{i-1}\}.
+\end{equation}
+
+We should remark that $k_{\max}$ depends on $N$ and we get:
+\begin{equation}
+\frac{\sum_{i=2}^{N} j_i}{N(N-1)} \leq \frac{j_1}{N} + \frac{k_{\max}}{2}.
+\end{equation}
+
+Let us consider that for each value of $N$ we have: $k_{\max} = (j_z-j_{z-1}) = k_{z-1}$. A natural number $z$ exists for each value of $N$. \hfill (31)
+
+Let us consider now that: $H = \sum_{i=1}^{z-1} k_i$ and that $J_2 = H+j_1 = j_z$, $J_1 = j_1$ and $J_i = j_{z-2+i}$ for $i>1$, with $z\geq 2$. \hfill (32)
+
+Hence, we have:
+\begin{equation}
+\sum_{i=z}^{N} j_i = \sum_{i=2}^{M} J_i, \quad\text{with}\quad M = N-z+2.
+\end{equation}
+
+Similarly to the proven inequality $\dfrac{\sum_{i=2}^{N} j_i}{N(N-1)} \leq \dfrac{j_1}{N} + \dfrac{k_{\max}}{2}$ we conclude that:
+\begin{equation}
+\begin{aligned}&\frac{\sum_{i=2}^{M} J_i}{M(M-1)} \leq \frac{J_1}{M} + \frac{H}{2},\\ &\text{and } H \text{ exists for each value of } M \text{ with } H = J_2-j_1.\end{aligned}
+\end{equation}
+
+This is true because we choose $M$ such that $M<L$, where $L$ is the smallest natural number implying that: $H < J_L - J_{L-1}$. \hfill (35)
+
+Consequently:
+\begin{equation}
+\frac{\sum_{i=3}^{M} J_i}{M(M-1)} \leq \frac{J_1}{M} + \frac{J_2-j_1}{2} - \frac{J_2}{M(M-1)}.
+\end{equation}
+
+Hence:
+\begin{equation}
+\frac{\sum_{i=3}^{M} J_i}{M(M-1)} \leq \frac{J_1}{M} - \frac{j_1}{2} + J_2\left(\frac{1}{2}-\frac{1}{M(M-1)}\right).
+\end{equation}
+
+And thus:
+\begin{equation}
+\frac{2\sum_{i=3}^{M} J_i}{2M(M-1)} - J_2\left(\frac{M(M-1)-2}{2M(M-1)}\right) \leq j_1\left(\frac{1}{M}-\frac{1}{2}\right).
+\end{equation}
+
+Consequently:
+\begin{equation}
+\frac{2\sum_{i=3}^{M} J_i + 2J_2}{2M(M-1)} - J_2\left(\frac{M(M-1)}{2M(M-1)}\right) \leq j_1\left(\frac{1}{M}-\frac{1}{2}\right).
+\end{equation}
+
+Hence:
+\begin{equation}
+\frac{\sum_{i=2}^{M} J_i}{M(M-1)} - \frac{J_2}{2} \leq j_1\left(\frac{1}{M}-\frac{1}{2}\right).
+\end{equation}
+
+Consequently, it is sufficient that we have $M>2$ in order to have:
+\begin{equation}
+\frac{\sum_{i=2}^{M} J_i}{M(M-1)} < \frac{J_2}{2}.
+\end{equation}
+
+We conclude that:
+\begin{equation}
+\frac{\sum_{i=2}^{M} J_i}{J_2\, M(M-1)} < \frac{1}{2}.
+\end{equation}
+
+This means that for $M>2$ we have:
+\begin{equation}
+\frac{\sum_{i=2}^{M} J_i}{J_2\, M(M-1)} < \frac{1}{2}.
+\end{equation}
+
+We should also add that if it is always possible to have $M=3$ for any possible value of $J_2$, then we have always:
+\begin{equation}
+\begin{aligned}&\frac{\sum_{i=2}^{3} J_i}{J_2 \cdot 3 \cdot(3-1)} < \frac{1}{2} \quad\text{hence:}\quad J_2+J_3 < 3J_2\\ &\text{and thus:}\quad J_3 < 2J_2.\end{aligned}
+\end{equation}
+
+Let us consider that it is always possible to have $j_i = J_M$ with $M=3$. This means also that if $J_3$ tends to infinity, then $J_2$ tends to infinity too since $J_3 < 2J_2$. \hfill (45)
+
+However, since $M=3$ is always possible, then we can reduce the value of $H$ from $H = \sum_{i=1}^{z-1} k_i$ to $H = \sum_{i=1}^{z-2} k_i$ in order to make $J_2$ play the previous role of $J_3$, but $J_2$ tends to infinity. \hfill (46)
+
+We recall that: $J_2 = H+J_1 = j_z$ and $(J_i-J_{i-1}) \leq H$ for any strictly positive natural number $i$ that is bigger than $2$ and that is smaller or equal to $M$. \hfill (47)
+
+We also recall that the correctness of the ``Twin Primes conjecture'' implies also that there are pairs of twin primes tending to infinity \cite{ref4,ref5}.
+
+Repeating the process above of reducing the value of $H$ makes all the possible values of $J_2$ tend to infinity. Thus, we would have $j_i$ tending to infinity for any strictly positive value of $i$, and this is impossible.
+
+We conclude that, if it is always possible to have $M=3$ for any possible value of $J_2$ then all the possible values of $J_3$ should be finite and this means that the ``Twin Primes conjecture'' cannot be true by satisfying the considerations of this article.
+
+Thus, if there exists at least one value $G$ of the number $z$ for which $J_{G+1} \geq 2j_G$, then the ``Twin Primes conjecture'' may be true.
+
+\section{The considerations regarding the Twin Primes conjecture and the contradictions leading to the disproof}
+
+We agree that if a natural number $x$ tends to infinity, then $j_x$ also tends to infinity, since there are infinitely many numbers $j_i$ smaller than $j_x$.
+
+However, if we consider that when $j_x$ tends to infinity, $x$ definitely tends to infinity, then we can also conclude that when $j_{j_x}$ tends to infinity, $j_x$ definitely tends to infinity, and that when $j_{j_{j_x}}$ tends to infinity, $j_{j_x}$ definitely tends to infinity.
+
+Thus, this is a logical induction on the indices, and we can define:
+\begin{equation}
+\begin{aligned}&(j,x)^0 = x, \quad (j,x)^1 = j_x, \quad (j,x)^2 = j_{j_x},\\ &(j,x)^3 = j_{j_{j_x}}, \ \text{and so on}\ldots\end{aligned}
+\end{equation}
+
+Now, let us consider that $x$ is finite. If the twin primes conjecture is true, then $(j,x)^t$ always tends to infinity when $t$ tends to infinity, even if $x$ is finite. However, by the above induction on the indices, which assumes that when $j_x$ tends to infinity, $x$ definitely tends to infinity, we have that $(j,x)^{t-1}$ tends to infinity, and also $(j,x)^{t-2}$ tends to infinity, and thus $(j,x)^0 = x$ tends to infinity. This is a contradiction with the fact that $x$ is considered finite.
+
+We conclude that, by considering that the ``Twin Primes conjecture'' is true, there exists a finite natural number $x$ with $j_x$ tending to infinity.
+
+Let us consider that the ``Twin Primes conjecture'' is true and that $x$ is finite but $j_x$ tends to infinity.
+
+Also, Professor Viggo Brun proved in his valuable works \cite{ref4,ref5} that for some constant $E$ we have:
+\begin{equation}
+\pi_2(y) < E\,\frac{y}{(\log y)^2}
+\end{equation}
+where $\pi_2(y)$ is the number of twin primes up to $y$.
+
+In the cumulative chain of this article, we proved that the number $N$ of the pairs of twin primes can be counted exactly since each twin prime $p_i$ plays a unique role corresponding to a unique number $j_i$. This characteristic of twin primes is very important in the proof of this article because we have a unique strict order of the numbers $j_i$ after fixing the indices $i$ in the cumulative chain. This implies that Brun's inequality above also means that, for a finite positive natural number $y$, we have:
+
+\begin{equation}
+\begin{aligned}&6\, j_{\left[\frac{\pi_2(y)-s}{2}\right]} + 1 < y,\\ &\text{with } s \text{ the finite number of twin primes smaller than } 6j_1-1.\end{aligned}
+\end{equation}
+ where $\left[\frac{\pi_2(y)-s}{2}\right]$ is the integer part or whole part of $\frac{\pi_2(y)-s}{2}$.
+ 
+Thus, assuming that $x < \left[\dfrac{\pi_2(y)-s}{2}\right]$ we have also:
+\begin{equation}
+6 j_x + 1 < y.
+\end{equation}
+
+However, we considered that $j_x$ tends to infinity even if $x$ is finite.
+
+Since $y$ is finite, this is a contradiction, which proves that we cannot have a finite natural number $x$ with $x < \left[\dfrac{\pi_2(y)-s}{2}\right]$ and $j_x$ tending to infinity.
+
+We conclude that
+\begin{equation}
+x \geq \left[\frac{\pi_2(y)-s}{2}\right]
+\end{equation}
+for any finite value of $y$. \hfill (52)
+
+However, we considered that the twin primes conjecture is true, and this means that $x$ tends to infinity. Thus, this is a contradiction with the fact that $x$ is a finite natural number.
+
+Consequently, we cannot consider that the twin primes conjecture is true by satisfying the considerations of this article.
+
+This means that the set of the numbers: $p + 6\sum_{i=1}^{N} k_i$ and $p - 2 + 6\sum_{i=1}^{N} k_i$ that are always a pair of twin primes for any strictly positive natural number $N$ is not infinite.
+
+We also know that the pairs of twin primes that cannot be expressed as the numbers: $p + 6\sum_{i=1}^{N} k_i$ and $p - 2 + 6\sum_{i=1}^{N} k_i$ for any strictly positive natural number $N$ are elements of a finite set only.
+
+Eureka! We can conclude then that the ``Twin Primes Conjecture'' is not true.
+
+Furthermore, a very important result of Roger Heath-Brown \cite{ref6} can be stated as follows:
+
+At least one of the two following statements is true:
+\begin{enumerate}[label=\arabic*-, leftmargin=1.5cm]
+\item There are no Siegel zeros.
+\item There are infinitely many twin primes.
+\end{enumerate}
+
+We conclude, thanks to this theorem, that there are no Siegel zeros.
+
+\begin{center}
+\textit{Quod erat demonstrandum.}
+\end{center}
+
+\section{Summary and conclusion}
+
+We started our work by proposing an extensive procedure in order to prove that:
+\begin{equation}
+\sum_{i=2}^{N} j_i^2 = (N-1)j_1^2 + 2j_1\sum_{i=1}^{N-1}(N-i)k_i + \sum_{i=1}^{N-1}\Big(\sum_{L=1}^{i}k_L\Big)^2
+\end{equation}
+where the positive natural numbers $j_i$ and $k_i$ are such that $j_{i+1} = j_i+k_i$, with $i$ any strictly positive natural number, and such that $(p-2)\times p = (6j_1-1)(6j_1+1) = 36 j_1^2 - 1$.
+
+We could then simplify the equation above and get:
+\begin{equation}
+\sum_{i=2}^{N} j_i = (N-1)j_1 + \sum_{i=1}^{N-1}(N-i)k_i.
+\end{equation}
+
+This cumulative chain is a single cumulative chain that can gather all the twin primes bigger than $3$.
+
+We used afterwards the equation above in order to prove that if it is always possible to have $M=3$ for any possible value of $J_2$, then we have always:
+\begin{equation}
+\frac{\sum_{i=2}^{3} J_i}{J_2 \cdot 3 \cdot (3-1)} < \frac{1}{2}
+\end{equation}
+hence: $J_2+J_3 < 3J_2$ and thus: $J_3 < 2J_2$.
+
+We recall that: $J_2 = H+J_1 = j_z$ and $(J_i-J_{i-1}) \leq H$ for any strictly positive natural number $i$ that is bigger than $2$ and that is smaller or equal to $M$.
+
+We concluded that the twin primes conjecture cannot be true if it is always possible to have $M=3$.
+
+Finally, we proved the existence of a finite value $x$ such that, assuming that the ``Twin Primes conjecture'' is true, $j_x$ tends to infinity.
+
+However, we used the following upper bound for the number of twin primes up to $y$ expressed as:
+\begin{equation}
+\pi_2(y) < E\,\frac{y}{(\log y)^2}
+\end{equation}
+for some constant $E$ where $\pi_2(y)$ is the number of twin primes up to the positive natural number $y$.
+
+This upper bound leads to a contradiction, stating that the natural number $x$ tends to infinity even though it was considered finite earlier in the article. Thus, we concluded that the ``Twin Primes Conjecture'' is not true.
+
+As an annex, we can also conclude from Viggo Brun's works \cite{ref4,ref5} that:
+\begin{equation}
+\sum_{i=2}^{N} \frac{1}{j_i} = R
+\end{equation}
+with $R$ finite when $N$ tends to infinity, since we have:
+\begin{equation}
+\frac{1}{p_i} + \frac{1}{p_i+2} = \frac{1}{6j_i-1} + \frac{1}{6j_i+1} = \frac{12 j_i}{36 j_i^2 -1} > \frac{12 j_i}{36 j_i^2} = \frac{1}{3 j_i}
+\end{equation}
+where $p_i$ and $p_i+2$ are twin primes such that $p_i = 6j_i - 1$.
+
+We also recall that the ``Twin Primes'' conjecture is the case of the even number $n=2$ in Polignac's conjecture. As a result of this article, the ``Hardy--Littlewood twin prime conjecture'', sometimes called the quantitative form of the ``Twin Primes conjecture'', is also not true. Furthermore, thanks to Roger Heath-Brown's theorem (1983), we could prove that there are no Siegel zeros.
+
+This significant result would bring transformative improvements in estimating the ranks of elliptic curves and $L$-functions, while also facilitating optimal error terms in the Prime Number Theorem for arithmetic progressions. It would contribute to advances in sieve theory and class number bounds for quadratic fields, marking a major step forward in analytic number theory and the theory of prime distribution.
+
+In number theory, it is common to encounter the expression $2 \times C_2 \approx 1.32032367\ldots$, known as the twin prime constant. Although the Twin Primes conjecture fails at a global level, the local expectation remains positive across finite scales. The twin prime constant continues to serve as the accurate local--global constant for prime constellations of the form ``two primes within an interval of fixed even length'', with its value remaining unchanged and precise.
+
+Should the disproof of the Twin Primes conjecture gain acceptance within the scientific community, it would have numerous implications in number theory, particularly for the distribution of prime numbers and related asymptotic properties. This may have repercussions for major unresolved problems such as the Riemann Hypothesis, which is intricately linked to prime distribution.
+
+Moreover, any credible solution of the Riemann Hypothesis---possibly aided by artificial intelligence and approved by the community---could assist in addressing Goldbach's conjecture. This is where the twin prime constant comes into play once more. Proving the Riemann Hypothesis would imply a highly regular distribution of primes, lending strong support to Goldbach's conjecture by demonstrating the abundance and regular spacing of primes necessary to form the required sums of primes.
+
+
+\section*{Declarations}
+
+\subsection*{Ethical Approval}
+This declaration is ``not applicable''.
+
+\subsection*{Competing interests}
+This declaration is ``not applicable''.
+
+\subsection*{Authors' contributions}
+This declaration is ``not applicable''.
+
+\subsection*{Funding}
+This declaration is ``not applicable''.
+
+\subsection*{Availability of data and materials}
+This declaration is ``not applicable''.
+
+\begin{thebibliography}{99}
+
+\bibitem{ref1} Louiz, A. A mathematical letter that disproves by contradiction the Collatz conjecture. \textit{Available on Researchgate.} DOI: \url{http://dx.doi.org/10.13140/RG.2.2.28997.56802}
+
+\bibitem{ref2} Louiz, A. (2025). A Proof of the Incompatibility of Discrete Arithmetic Constraints and Asymptotic Sieve Approximations. \textit{Available on Researchgate.} DOI: \url{https://doi.org/10.13140/RG.2.2.25738.73920}
+
+\bibitem{ref3} Louiz, A. (2025). The proof of a series as an upper bound for the number of positive square-free numbers and thus for the Mertens function. \textit{Available on Researchgate.} DOI: \url{http://dx.doi.org/10.13140/RG.2.2.26294.82247}
+
+\bibitem{ref4} Brun, V. (1919). La s\'erie 1/5 + 1/7 + 1/11 + 1/13 + 1/17 + 1/19 + 1/29 + 1/31 + \ldots\ est convergente ou finie. \textit{Bulletin des Sciences Math\'ematiques}, 43(1), 100--104.
+
+\bibitem{ref5} Berke, A. (2006). An Introduction to The Twin Prime Conjecture.
+
+\bibitem{ref6} Heath-Brown, D. R. (1983-09-01). ``Prime Twins and Siegel Zeros''. \textit{Proceedings of the London Mathematical Society}. s3-47 (2): 193--224. DOI: 10.1112/plms/s3-47.2.193.
+
+\end{thebibliography}
+
+\end{document}

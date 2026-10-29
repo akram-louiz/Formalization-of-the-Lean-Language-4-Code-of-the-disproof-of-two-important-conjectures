@@ -1,0 +1,1449 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[authoryear,round]{natbib}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
+\allowdisplaybreaks[4]
+\setlength{\emergencystretch}{3em}
+
+\newcommand{\N}{\mathbb{N}}
+% Pf{top of i-sum}{top of j-sum}{sequence}{index letter}:
+% 2^{sum_{i=0}^{top} p_i} - sum_{j=1}^{jtop} ( 3^{j-1} 2^{sum_{i=j}^{top} p_i} )
+\newcommand{\Pf}[4]{2^{\sum_{#4=0}^{#1}#3_{#4}}-\sum_{j=1}^{#2}\left(3^{j-1}\times 2^{\sum_{#4=j}^{#1}#3_{#4}}\right)}
+\newcommand{\Fone}{3^{N+1}\times x_{2N}+3^{N}=\Pf{N}{N}{p}{i}}
+\newcommand{\Ftwo}{3^{M}\times x_{2M-1}=\Pf{M}{M}{p}{i}}
+
+\theoremstyle{definition}
+\newtheorem*{remark*}{Remark}
+
+\title{\textbf{Statements equivalent to the proof of the Collatz conjecture, useful sequences, and a contradiction leading to the disproof of the conjecture}}
+\author{Akram Louiz\\[2pt]
+\small Independent researcher, Settat, Morocco\\
+\small \href{mailto:louiz.akram@gmail.com}{louiz.akram@gmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We look at the Collatz conjecture by using finite recurrences. We start with five types of numbers that follow the conjecture. We show that all of these types end up as two final forms. Both final forms are controlled by a sequence of exponents written as $(p_i)$. Because of this the conjecture is the same as saying that every odd number has the first final form of the article. We prove that the length $N$ of this expression can be different. We explain how we can always choose the possible $N$. We show many groups of odd numbers that have the first final form. One group is made using the Fermat--Euler theorem. We also add a part with a way to calculate numbers like $(2^{2M}-1)/3$ without dividing. In the end we assume that the numbers $4B+1$ and $4B-1$ both follow the conjecture. When we compare their forms we find a problem. This leads us to say that the conjecture is not true!
+\end{abstract}
+
+\noindent\textbf{Keywords:} Collatz conjecture, Syracuse, sequence, process, recurrence,
+even, odd, expression, natural numbers, solution, form, separate sets, equivalent proof,
+contradiction, disproof.
+
+%==========================================================================
+\section{Introduction}
+This article merges two earlier manuscripts by the same author,
+\citet{LouizEquivalent} and \citet{LouizLetter}; see the Disclosure at the end of the article.
+
+Many works still try to explain the meanings and the consequences of the Collatz conjecture
+\citep{AndreiMasalagiu}, whereas other works propose new approaches in studying this problem
+\citep{Ren}. And thus, we have the right to believe that the field of mathematics has all the
+tools to find solution of arithmetic problems such as the Collatz conjecture. We carry on
+consequently in our previous efforts in proposing new results \citep{Louiz2024} in order to
+better explain the aspects of this conjecture and in order to collaborate with all the lovers
+of mathematics who dream of finding a solution for the Collatz conjecture.
+
+In our previous work \citep{Louiz2024}, we concluded for $x_n\neq 0$ that all the natural numbers $x_n$
+which respect the Collatz conjecture can be expressed in at least one of the following
+five forms.
+
+\medskip\noindent\textbf{The first form:}
+\[ x_n=2^{M}\qquad \forall M\in\N\setminus\{0\}. \]
+\textbf{The second form:}
+\[ x_n=\frac{2^{2\times M}-1}{3}\qquad \forall M\in\N\setminus\{0\}, \]
+since the recurrence relation demonstrated in \citep{Louiz2024} is only for $n\ge 2$ and
+this is the case for $n=0$.
+
+\medskip\noindent\textbf{The third form:}
+\[ 3\times x_n=2^{2\times M+p_1}-2^{p_1}\qquad \forall M\in\N\setminus\{0\}, \]
+since the recurrence relation demonstrated in \citep{Louiz2024} is only for $n\ge 2$ and
+this is the case for $n=1$. In this expression $p_1$ can be any natural number with
+$p_1\ge 1$.
+
+\medskip\noindent\textbf{The fourth form:}
+\[ 3^{\frac n2+1}\times x_n+3^{\frac n2}=\Pf{\frac n2}{\frac n2}{p}{i}, \]
+where $n$ can be any even natural number with $n\ge 2$ and the numbers $p_i$ can be any
+natural numbers which respect $p_i\ge 1$ $\forall i\in\N\setminus\{0\}$ and
+$p_0=2\times M$, where $M$ can be any strictly positive natural number.
+
+\medskip\noindent\textbf{The fifth form:}
+\[ 3^{\frac{n+1}{2}}\times x_n=\Pf{\frac{n+1}{2}}{\frac{n+1}{2}}{p}{i}, \]
+where $n$ can be any odd natural number with $n\ge 2$ and the numbers $p_i$ can be any
+natural numbers which respect $p_i\ge 1$ $\forall i\in\N\setminus\{0\}$ and
+$p_0=2\times M$, where $M$ can be any strictly positive natural number.
+
+\medskip
+We also concluded in \citep{Louiz2024} that we can prove that the Collatz conjecture is
+always true if we prove that all the natural numbers can be expressed in these five forms
+demonstrated above only.
+
+We proposed that the artificial intelligence and many mathematics software can simplify this
+task of proving that all the natural numbers can be expressed in these five forms
+demonstrated above only. However, we work in this article without the help of computers in
+order to simplify even more the results of the previous article \citep{Louiz2024} that form
+the basis of the present work.
+
+In this article we prove that all the numbers that respect the Collatz conjecture respect
+two final forms:
+\begin{description}
+\item[First final form:]
+$\displaystyle \Fone$, with $x_{2N}$ an odd natural number and $N$ a natural number with
+$N\ge 2$;
+\item[Second final form:]
+$\displaystyle \Ftwo$, with $x_{2M-1}$ an even natural number and $M$ a natural number
+with $M\ge 2$.
+\end{description}
+Here the numbers $x_{2N}$ and $x_{2M-1}$ are natural numbers which respect the Collatz
+conjecture and the numbers $p_i$ can be any natural numbers which respect $p_i\ge 1$
+$\forall i\in\N\setminus\{0\}$ and $p_0=2\times A$, where $A$ can be any strictly positive
+natural number.
+
+We also prove that the numbers $N$ and $M$ are not unique in both expressions
+(Section~\ref{sec:uniq}). Precisely, if we have
+\[ 3^{N+1}\times x_{2N}+3^{N}=\Pf{N}{N}{p}{i}\]
+then we have also
+\[ 3^{M+1}\times x_{2N}+3^{M}=\Pf{M}{M}{q}{i},\]
+where $M$ is another natural number with $M>N$ and the numbers $q_k$ are natural numbers
+which respect $q_k\ge 1$ $\forall k\in\N\setminus\{0\}$ and $q_0=2\times M'$, where $M'$ is
+a strictly positive natural number, and we have $q_k=2$ for $0\le k\le M-N-1$ and
+$p_{k-(M-N)}=q_k$ for any natural number $k$ with $M-N\le k\le M$.
+
+We can conclude that, for an odd number $x_{2N}$ that respects the expression of the
+first final form, if $N$ is the smallest natural number that satisfies
+$3^{N+1}\times x_{2N}+3^{N}=\Pf{N}{N}{p}{i}$, then all the other expressions of the first
+final form of this same number $x_{2N}$ are with $M=N+O$, where $O$ can be any strictly
+positive natural number, and we have also
+$3^{M+1}\times x_{2N}+3^{M}=\Pf{M}{M}{q}{i}$, the numbers $q_k$ being natural numbers
+which respect $q_k\ge 1$ $\forall k\in\N\setminus\{0\}$ and $q_0=2\times M'$, where $M'$ is
+a strictly positive natural number, with $q_k=2$ for $0\le k\le M-N-1$ and
+$p_{k-(M-N)}=q_k$ for any natural number $k$ with $M-N\le k\le M$.
+
+This means that we can build infinitely many other different expressions of the first
+final form for this same number $x_{2N}$. Consequently, the first final form expression
+of the number $x_{2N}$ is not unique.
+
+Furthermore, we prove that it is sufficient to prove that all odd natural numbers respect
+the first final form in order to prove the Collatz conjecture. We propose a method to find
+odd natural numbers that have a specific number $N$ in their first final form
+(Section~\ref{sec:infinite}), and an annex gives a method to calculate all the possible
+values of the natural numbers $x_n=\frac{2^{2\times M}-1}{3}$ without any division,
+by means of a demonstrated sequence.
+
+Finally, in Section~\ref{sec:contra} we consider that the sets of numbers $4\times B+1$
+and $4\times B-1$ both respect the Collatz conjecture, each with its own first final form.
+This fact implies a contradiction that proves that the Collatz conjecture is not true for
+all strictly positive natural numbers.
+
+%==========================================================================
+\section{The first form is included in the fifth form}\label{sec:first-fifth}
+Let $n$ be an odd natural number with $n>2$ and let $M$ be a strictly positive natural
+number. We have
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=3^{\frac{n+1}{2}-1}\times 3\times 2^{M}
+=3^{\frac{n+1}{2}-1}\times(2+1)\times 2^{M}
+=3^{\frac{n+1}{2}-1}\times\left(2^{M+1}+2^{M}\right)
+\end{equation}
+Hence
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=3^{\frac{n+1}{2}-1}\times\left(2^{M+1}+2^{M+1}-2^{M}\right)
+=3^{\frac{n+1}{2}-1}\times\left(2^{M+2}-2^{M}\right)
+\end{equation}
+Consequently
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=3^{\frac{n+1}{2}-1}\times 2^{M+2}-3^{\frac{n+1}{2}-1}\times 2^{M}
+\end{equation}
+We repeat the same method for
+\begin{equation}
+3^{\frac{n+1}{2}-1}\times 2^{M+2}
+\end{equation}
+Hence we get
+\begin{equation}
+3^{\frac{n+1}{2}-1}\times 2^{M+2}=3^{\frac{n+1}{2}-2}\times 2^{M+4}-3^{\frac{n+1}{2}-2}\times 2^{M+2}
+\end{equation}
+Consequently we have
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=3^{\frac{n+1}{2}-2}\times 2^{M+4}-3^{\frac{n+1}{2}-2}\times 2^{M+2}-3^{\frac{n+1}{2}-1}\times 2^{M}
+\end{equation}
+We repeat the same method for
+\begin{equation}
+3^{\frac{n+1}{2}-2}\times 2^{M+4}
+\end{equation}
+Hence we get
+\begin{equation}
+3^{\frac{n+1}{2}-2}\times 2^{M+4}=3^{\frac{n+1}{2}-3}\times 2^{M+6}-3^{\frac{n+1}{2}-3}\times 2^{M+4}
+\end{equation}
+Consequently we have
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=3^{\frac{n+1}{2}-3}\times 2^{M+6}-3^{\frac{n+1}{2}-3}\times 2^{M+4}-3^{\frac{n+1}{2}-2}\times 2^{M+2}-3^{\frac{n+1}{2}-1}\times 2^{M}
+\end{equation}
+And thus we can guess the following recurrence relation:
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=2^{M+n+1}-\sum_{i=1}^{\frac{n+1}{2}}3^{\frac{n+1}{2}-i}\times 2^{M+2\times(i-1)}
+\end{equation}
+
+\medskip\noindent\emph{Proof of the recurrence relation.} For $n=3$ we have
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=9\times 2^{M}
+\end{equation}
+And also, for $n=3$ we have
+\begin{equation}
+2^{M+n+1}-\sum_{i=1}^{\frac{n+1}{2}}3^{\frac{n+1}{2}-i}\times 2^{M+2\times(i-1)}
+=2^{M+4}-3\times 2^{M}-2^{M+2}=2^{M}\times\left(2^{4}-3-2^{2}\right)
+\end{equation}
+Hence we have
+\begin{equation}
+2^{M+n+1}-\sum_{i=1}^{\frac{n+1}{2}}3^{\frac{n+1}{2}-i}\times 2^{M+2\times(i-1)}=9\times 2^{M}
+\end{equation}
+And thus, for $n=3$ we respected that
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=2^{M+n+1}-\sum_{i=1}^{\frac{n+1}{2}}3^{\frac{n+1}{2}-i}\times 2^{M+2\times(i-1)}.
+\end{equation}
+Now let us consider that this recurrence relation is correct up to the number $n$ and let
+us prove it for $n+2$, since $n$ can only be an odd number. We have
+\begin{equation}
+3^{\frac{n+3}{2}}\times 2^{M}=3^{\frac{n+1}{2}+1}\times 2^{M}=3\times 3^{\frac{n+1}{2}}\times 2^{M}
+\end{equation}
+Consequently
+\begin{equation}
+3\times\left(2^{M+n+1}-\sum_{i=1}^{\frac{n+1}{2}}3^{\frac{n+1}{2}-i}\times 2^{M+2\times(i-1)}\right)
+=3\times 2^{M+n+1}-\sum_{i=1}^{\frac{n+1}{2}}3^{\frac{n+3}{2}-i}\times 2^{M+2\times(i-1)}
+\end{equation}
+And we have
+\begin{equation}
+3\times 2^{M+n+1}=2^{M+n+2}+2^{M+n+1}=2^{M+n+3}-2^{M+n+1}
+\end{equation}
+And thus we have
+\begin{equation}
+3\times\left(2^{M+n+1}-\sum_{i=1}^{\frac{n+1}{2}}3^{\frac{n+1}{2}-i}\times 2^{M+2\times(i-1)}\right)
+=2^{M+n+3}-2^{M+n+1}-\sum_{i=1}^{\frac{n+1}{2}}3^{\frac{n+3}{2}-i}\times 2^{M+2\times(i-1)}
+\end{equation}
+And this is equivalent to
+\begin{equation}
+3\times\left(2^{M+n+1}-\sum_{i=1}^{\frac{n+1}{2}}3^{\frac{n+1}{2}-i}\times 2^{M+2\times(i-1)}\right)
+=2^{M+n+3}-\sum_{i=1}^{\frac{n+3}{2}}3^{\frac{n+3}{2}-i}\times 2^{M+2\times(i-1)}
+\end{equation}
+Hence we proved that
+\begin{equation}
+3^{\frac{n+3}{2}}\times 2^{M}=2^{M+n+3}-\sum_{i=1}^{\frac{n+3}{2}}3^{\frac{n+3}{2}-i}\times 2^{M+2\times(i-1)}
+\end{equation}
+and this means that our recurrence relation is correct also for $n+2$. We conclude that
+the recurrence relation
+$3^{\frac{n+1}{2}}\times 2^{M}=2^{M+n+1}-\sum_{i=1}^{\frac{n+1}{2}}3^{\frac{n+1}{2}-i}\times 2^{M+2\times(i-1)}$
+is correct for any odd natural number $n$ with $n>2$ and for any strictly positive natural
+number $M$.
+
+Also, by substituting $\frac{n+1}{2}-i$ with $j-1$ in the series of our recurrence
+relation, we get
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=2^{M+n+1}-\sum_{j=1}^{\frac{n+1}{2}}3^{j-1}\times 2^{M+n+1-2\times j}.
+\end{equation}
+This result can also be obtained by using the remarkable identity
+$3^{\frac{n+1}{2}}-4^{\frac{n+1}{2}}$.
+
+We remark that this equation can be equivalent to the fifth form of the numbers which
+respect the Collatz conjecture and which have the form
+\begin{equation}
+3^{\frac{n+1}{2}}\times x_n=\Pf{\frac{n+1}{2}}{\frac{n+1}{2}}{p}{i}.
+\end{equation}
+And in this case we have the equation
+\begin{equation}
+2^{M+n+1}=2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}
+\end{equation}
+and we have also the equation
+\begin{equation}
+2^{M+n+1-2\times j}=2^{\sum_{i=j}^{\frac{n+1}{2}}p_i}\quad\text{for any natural number }j\text{ with }1\le j\le\frac{n+1}{2}.
+\end{equation}
+However, in this case we should respect the fact that the numbers $p_i$ can only be
+natural numbers which respect $p_i\ge 1$ $\forall i\in\N\setminus\{0\}$ and $p_0=2\times N_0$,
+where $N_0$ can be any strictly positive natural number. Hence, since we should have
+$p_i\ge 1$ $\forall i\in\N\setminus\{0\}$, we should have
+\begin{equation}
+\sum_{i=j}^{\frac{n+1}{2}}p_i\ge\frac{n+1}{2}-j+1
+\end{equation}
+And this means that we should have
+\begin{equation}
+2^{\sum_{i=j}^{\frac{n+1}{2}}p_i}\ge 2^{\frac{n+1}{2}-j+1}\quad\text{for any natural number }j\text{ with }1\le j\le\frac{n+1}{2}
+\end{equation}
+Hence we should have
+\begin{equation}
+2^{M+n+1-2\times j}\ge 2^{\frac{n+1}{2}-j+1}\quad\text{for any natural number }j\text{ with }1\le j\le\frac{n+1}{2}.
+\end{equation}
+We have
+\begin{equation}
+M+n+1-2\times j-\left(\frac{n+1}{2}-j+1\right)=M+\frac{n+1}{2}-1-j
+\end{equation}
+And
+\begin{equation}
+\text{for any natural number }j\text{ with }1\le j\le\frac{n+1}{2},
+\end{equation}
+we have
+\begin{equation}
+M+\frac{n+1}{2}-1-j\ge M-1\ge 0\quad\text{since }M>0.
+\end{equation}
+Consequently, we have always
+\begin{equation}
+2^{M+n+1-2\times j}\ge 2^{\frac{n+1}{2}-j+1},
+\end{equation}
+and this means that we respect indeed that, for any natural number $j$ with
+$1\le j\le\frac{n+1}{2}$, we have
+\begin{equation}
+2^{\sum_{i=j}^{\frac{n+1}{2}}p_i}\ge 2^{\frac{n+1}{2}-j+1}
+\end{equation}
+We can remark also that, for $j=1$, we have
+\begin{equation}
+p_0=M+n+1-\sum_{i=j}^{\frac{n+1}{2}}p_i=M+n+1-(M+n+1-2\times j)=2
+\end{equation}
+Consequently we respected also that $p_0$ is an even number. We can remark also that for
+$j=\frac{n+1}{2}$ we have
+\begin{equation}
+p_{\frac{n+1}{2}}=M+n+1-2\times j=M
+\end{equation}
+Finally, we conclude that all the natural numbers which respect the first form of the
+numbers which respect the Collatz conjecture and which have the form $x_n=2^{M}$
+$\forall M\in\N\setminus\{0\}$ respect also the fifth form
+\[3^{\frac{n+1}{2}}\times x_n=\Pf{\frac{n+1}{2}}{\frac{n+1}{2}}{p}{i},\]
+where $n$ is odd and $n>2$.
+
+However, this result does not mean that $x_n=2^{M}$ should be transformed to the number
+$x_0=\frac{2^{2N}-1}{3}$ of the Collatz conjecture process after exactly $n$ operations,
+as explained in \citep{Louiz2024}, since we should only divide $x_n=2^{M}$ by a power of two
+in order to reach the number $1$ of the Collatz conjecture. Furthermore, in this case the
+representation of the natural number $x_n$ with the fifth form is not unique, since the
+natural number $n$ can take any odd value with $n>2$.
+
+%==========================================================================
+\section{About the uniqueness of the expressions of the fourth and fifth forms}\label{sec:uniq}
+Let us consider that we have two different expressions of the fifth form for a same
+number $x_n$ which is a number of the fifth form. Then we have
+\begin{gather*}
+3^{\frac{n+1}{2}}\times x_n=\Pf{\frac{n+1}{2}}{\frac{n+1}{2}}{p}{i}\\
+\text{and also}\\
+3^{\frac{m+1}{2}}\times x_n=\Pf{\frac{m+1}{2}}{\frac{m+1}{2}}{q}{k},
+\end{gather*}
+where $m$ is another odd natural number with $m>n$ and the numbers $q_k$ are natural
+numbers which respect $q_k\ge 1$ $\forall k\in\N\setminus\{0\}$ and $q_0=2\times M'$,
+where $M'$ is a strictly positive natural number.
+
+In this case we have two different ``procedures'' of the Collatz conjecture for the same
+even natural number $x_n$. Hence, by using the two equations, we can divide $x_n$ by
+$2^{p_{\frac{n+1}{2}}}$ in order to get an odd number as a result and we can also divide
+$x_n$ by $2^{q_{\frac{m+1}{2}}}$ in order to get an odd number as a result. This means
+obviously that
+\begin{equation}
+p_{\frac{n+1}{2}}=q_{\frac{m+1}{2}}
+\end{equation}
+since the even natural number $x_n$ is the same in the two equations, and we get these two
+equations as a result after our division:
+\begin{equation}
+\text{equation 1:}\quad
+3^{\frac{n+1}{2}-1}\times\left(\frac{3\times x_n}{2^{p_{\frac{n+1}{2}}}}+1\right)
+=2^{\sum_{i=0}^{\frac{n+1}{2}-1}p_i}-\sum_{j=1}^{\frac{n+1}{2}-1}\left(3^{j-1}\times 2^{\sum_{i=j}^{\frac{n+1}{2}-1}p_i}\right)
+\end{equation}
+\begin{equation}
+\text{equation 2:}\quad
+3^{\frac{m+1}{2}-1}\times\left(\frac{3\times x_n}{2^{q_{\frac{m+1}{2}}}}+1\right)
+=2^{\sum_{k=0}^{\frac{m+1}{2}-1}q_k}-\sum_{j=1}^{\frac{m+1}{2}-1}\left(3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}-1}q_k}\right).
+\end{equation}
+Now by using these two equations, we can divide again
+$\frac{3\times x_n}{2^{p_{\frac{n+1}{2}}}}+1$ by $2^{p_{\frac{n+1}{2}-1}}$ in order to get
+an odd number as a result and we can also divide
+$\frac{3\times x_n}{2^{q_{\frac{m+1}{2}}}}+1$ by $2^{q_{\frac{m+1}{2}-1}}$ in order to get
+an odd number as a result. However, we proved above that
+\begin{equation}
+\frac{3\times x_n}{2^{p_{\frac{n+1}{2}}}}+1=\frac{3\times x_n}{2^{q_{\frac{m+1}{2}}}}+1.
+\end{equation}
+And thus, this means that we have also
+\begin{equation}
+p_{\frac{n+1}{2}-1}=q_{\frac{m+1}{2}-1}.
+\end{equation}
+We can carry on with the same steps until we prove that
+\begin{equation}
+p_{\frac{n+1}{2}-A}=q_{\frac{m+1}{2}-A}\quad\text{for any natural number }A\text{ with }0\le A\le\frac{n+1}{2}.
+\end{equation}
+Consequently, even if the natural number $x_n$ that is a number of the fifth form has two
+different expressions of the fifth form, we remark in these different expressions that the
+numbers $p_i$ and $q_k$ (which are the exponents of the powers of two) are identical in both
+expressions starting from $p_0=q_{\frac{m-n}{2}}$ until $p_{\frac{n+1}{2}}=q_{\frac{m+1}{2}}$
+(by varying the index $A$). Hence, we must calculate the numbers $q_k$ separately for
+$0\le k\le\frac{m-n}{2}-1$.
+
+We have
+\begin{equation}
+3^{\frac{m+1}{2}}\times x_n=3^{\frac{m-n}{2}}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}-3^{\frac{m-n}{2}}\times\sum_{j=1}^{\frac{n+1}{2}}\left(3^{j-1}\times 2^{\sum_{i=j}^{\frac{n+1}{2}}p_i}\right)
+\end{equation}
+Hence
+\begin{equation}
+3^{\frac{m+1}{2}}\times x_n=3^{\frac{m-n}{2}}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}-\sum_{j=1}^{\frac{n+1}{2}}\left(3^{\frac{m-n}{2}+j-1}\times 2^{\sum_{i=j}^{\frac{n+1}{2}}p_i}\right)
+\end{equation}
+Consequently
+\begin{equation}
+3^{\frac{m+1}{2}}\times x_n=3^{\frac{m-n}{2}}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}-\sum_{j=\frac{m-n}{2}+1}^{\frac{m+1}{2}}\left(3^{j-1}\times 2^{\sum_{i=j}^{\frac{m+1}{2}}p_{i-\frac{m-n}{2}}}\right)
+\end{equation}
+And we have
+\begin{equation}
+3^{\frac{m+1}{2}}\times x_n=2^{\sum_{k=0}^{\frac{m+1}{2}}q_k}-\sum_{j=1}^{\frac{m-n}{2}}\left(3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k}\right)-\sum_{j=\frac{m-n}{2}+1}^{\frac{m+1}{2}}\left(3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k}\right)
+\end{equation}
+And since we proved that
+\begin{equation}
+p_{k-\frac{m-n}{2}}=q_k\quad\text{for any natural number }k\text{ with }\frac{m-n}{2}+1\le k\le\frac{m+1}{2}
+\end{equation}
+then we get the equation
+\begin{equation}
+3^{\frac{m-n}{2}}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}=2^{\sum_{k=0}^{\frac{m+1}{2}}q_k}-\sum_{j=1}^{\frac{m-n}{2}}\left(3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k}\right)
+\end{equation}
+Consequently, we have
+\begin{equation}
+3^{\frac{m-n}{2}}=2^{\sum_{k=0}^{\frac{m-n}{2}-1}q_k}-\sum_{j=1}^{\frac{m-n}{2}}\left(3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k-\sum_{i=0}^{\frac{n+1}{2}}p_i}\right)
+\end{equation}
+However, we proved above also that
+\begin{equation}
+3^{\frac{m-n}{2}}=2^{m-n}-\sum_{j=1}^{\frac{m-n}{2}}3^{j-1}\times 2^{m-n-2\times j}
+\end{equation}
+And thus, we get
+\begin{equation}
+2^{\sum_{k=0}^{\frac{m-n}{2}-1}q_k}=2^{m-n}\quad\text{and}\quad
+2^{\sum_{k=j}^{\frac{m+1}{2}}q_k-\sum_{i=0}^{\frac{n+1}{2}}p_i}=2^{m-n-2\times j}\quad\text{for }1\le j\le\frac{m-n}{2}
+\end{equation}
+And since we have
+\begin{equation}
+\sum_{k=j}^{\frac{m+1}{2}}q_k-\sum_{i=0}^{\frac{n+1}{2}}p_i=\sum_{k=j}^{\frac{m-n}{2}-1}q_k
+\end{equation}
+this means that
+\begin{equation}
+q_k=2\quad\text{for any natural number }k\text{ with }0\le k\le\frac{m-n}{2}-1
+\end{equation}
+Finally, we conclude that, if the natural number $x_n$ that is a number of the fifth form
+has two different expressions of the fifth form
+\begin{gather*}
+3^{\frac{n+1}{2}}\times x_n=\Pf{\frac{n+1}{2}}{\frac{n+1}{2}}{p}{i}\\
+\text{and also}\\
+3^{\frac{m+1}{2}}\times x_n=\Pf{\frac{m+1}{2}}{\frac{m+1}{2}}{q}{k},
+\end{gather*}
+where $m$ is another odd natural number with $m>n$, then we remark in these different
+expressions that the numbers $p_i$ and $q_k$ (which are the exponents of the powers of two)
+are identical in both expressions for $p_{k-\frac{m-n}{2}}=q_k$ for any natural number $k$
+with $\frac{m-n}{2}\le k\le\frac{m+1}{2}$. And we have also $q_k=2$ for
+$0\le k\le\frac{m-n}{2}-1$.
+
+This result means not only that two different expressions of the fifth form are possible
+for the same natural number $x_n$, but it means also that, in order to find a second
+expression of the fifth form for a number $x_n$ that has an expression of the fifth form
+\[3^{\frac{n+1}{2}}\times x_n=\Pf{\frac{n+1}{2}}{\frac{n+1}{2}}{p}{i},\]
+we can follow the following process, by considering an odd natural number $m$ with $m>n$.
+We proved above this remarkable identity:
+\begin{equation}
+3^{\frac{m-n}{2}}=2^{m-n}-\sum_{j=1}^{\frac{m-n}{2}}3^{j-1}\times 2^{m-n-2\times j}
+\end{equation}
+Hence, we have
+\begin{equation}
+3^{\frac{m-n}{2}}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}=2^{m-n}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}-\sum_{j=1}^{\frac{m-n}{2}}3^{j-1}\times 2^{m-n-2\times j}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}
+\end{equation}
+We consider now that
+\begin{equation}
+\begin{split}
+&q_k=2\ \text{ for }0\le k\le\frac{m-n}{2}-1\quad\text{and}\\
+&p_{k-\frac{m-n}{2}}=q_k\ \text{ for any natural number }k\text{ with }\frac{m-n}{2}\le k\le\frac{m+1}{2}.
+\end{split}
+\end{equation}
+Consequently we have
+\begin{equation}
+3^{\frac{m-n}{2}}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}=2^{\sum_{i=0}^{\frac{m+1}{2}}q_i}-\sum_{j=1}^{\frac{m-n}{2}}3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k}
+\end{equation}
+Hence
+\begin{equation}
+3^{\frac{m-n}{2}}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}-\sum_{j=\frac{m-n}{2}+1}^{\frac{m+1}{2}}3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k}=2^{\sum_{i=0}^{\frac{m+1}{2}}q_i}-\sum_{j=1}^{\frac{m+1}{2}}3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k}
+\end{equation}
+And thus
+\begin{equation}
+3^{\frac{m-n}{2}}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}-3^{\frac{m-n}{2}}\times\sum_{j=1}^{\frac{n+1}{2}}3^{j-1}\times 2^{\sum_{k=j}^{\frac{n+1}{2}}q_{k+\frac{m-n}{2}}}=2^{\sum_{i=0}^{\frac{m+1}{2}}q_i}-\sum_{j=1}^{\frac{m+1}{2}}3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k}
+\end{equation}
+Hence
+\begin{equation}
+3^{\frac{m-n}{2}}\times 2^{\sum_{i=0}^{\frac{n+1}{2}}p_i}-3^{\frac{m-n}{2}}\times\sum_{j=1}^{\frac{n+1}{2}}3^{j-1}\times 2^{\sum_{k=j}^{\frac{n+1}{2}}p_k}=2^{\sum_{i=0}^{\frac{m+1}{2}}q_i}-\sum_{j=1}^{\frac{m+1}{2}}3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k}
+\end{equation}
+And thus, we have
+\begin{equation}
+3^{\frac{m-n}{2}}\times 3^{\frac{n+1}{2}}\times x_n=2^{\sum_{i=0}^{\frac{m+1}{2}}q_i}-\sum_{j=1}^{\frac{m+1}{2}}3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k}
+\end{equation}
+Finally, we conclude that
+\begin{equation}
+3^{\frac{m+1}{2}}\times x_n=2^{\sum_{i=0}^{\frac{m+1}{2}}q_i}-\sum_{j=1}^{\frac{m+1}{2}}3^{j-1}\times 2^{\sum_{k=j}^{\frac{m+1}{2}}q_k}
+\end{equation}
+And this means that the second expression of the fifth form for the natural number $x_n$ is
+\begin{equation}
+3^{\frac{m+1}{2}}\times x_n=\Pf{\frac{m+1}{2}}{\frac{m+1}{2}}{q}{k},
+\end{equation}
+where $m$ is another odd natural number with $m>n$ and the numbers $q_k$ are natural
+numbers which respect $q_k\ge 1$ $\forall k\in\N\setminus\{0\}$ and $q_0=2\times M'$, where
+$M'$ is a strictly positive natural number, since we have $q_k=2$ for
+$0\le k\le\frac{m-n}{2}-1$ and $p_{k-\frac{m-n}{2}}=q_k$ for any natural number $k$ with
+$\frac{m-n}{2}\le k\le\frac{m+1}{2}$.
+
+We can conclude that, for an even number $x_n$ that respects the expression of the fifth
+form, we can build infinitely many other different expressions of the fifth form for this
+same number $x_n$. Consequently, the fifth form expression of the number $x_n$ is not
+unique, but we can choose the fifth form expression
+$3^{\frac{m+1}{2}}\times x_n=\Pf{\frac{m+1}{2}}{\frac{m+1}{2}}{q}{k}$ where $m$ is the
+smallest possible natural number.
+
+And by making a similar proof, we can also make the same remark for any odd natural number
+$x_n$ that is a number of the fourth form with two different expressions of the fourth
+form or more. We only have to start the proof by considering and using an even natural
+number
+\begin{equation}
+X_n=3\times x_n+1
+\end{equation}
+since we have
+\begin{equation}
+3^{\frac n2+1}\times x_n+3^{\frac n2}=3^{\frac n2}\times(3\times x_n+1)=3^{\frac n2}\times X_n.
+\end{equation}
+
+%==========================================================================
+\section{The second form is included in the fourth form}
+We proved that
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=2^{M+n+1}-\sum_{j=1}^{\frac{n+1}{2}}3^{j-1}\times 2^{M+n+1-2\times j}
+=\Pf{\frac{n+1}{2}}{\frac{n+1}{2}}{p}{i}
+\end{equation}
+where $p_{\frac{n+1}{2}}=M$ and $p_0=2$, $M$ can be any strictly positive natural number
+and $n$ is an odd natural number. And thus we have also
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{2\times M}=2^{2\times M+n+1}-\sum_{j=1}^{\frac{n+1}{2}}3^{j-1}\times 2^{2\times M+n+1-2\times j}
+=\Pf{\frac{n+1}{2}}{\frac{n+1}{2}}{p}{i}
+\end{equation}
+where
+\begin{equation}
+p_{\frac{n+1}{2}}=2\times M\quad\text{and}\quad p_0=2
+\end{equation}
+And we know that
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{2\times M}=3^{\frac{n+1}{2}}\times\left(2^{2\times M}-1\right)+3^{\frac{n+1}{2}}
+=3^{\frac{n+1}{2}+1}\times\frac{\left(2^{2\times M}-1\right)}{3}+3^{\frac{n+1}{2}}
+\end{equation}
+Hence we have
+\begin{equation}
+3^{\frac{n+1}{2}+1}\times\frac{\left(2^{2\times M}-1\right)}{3}+3^{\frac{n+1}{2}}
+=2^{2\times M+n+1}-\sum_{j=1}^{\frac{n+1}{2}}3^{j-1}\times 2^{2\times M+n+1-2\times j}
+\end{equation}
+We have that $n+1$ is an even number. Let us consider that $m=n+1$, so that $m>3$. We have
+\begin{equation}
+3^{\frac m2+1}\times\frac{\left(2^{2\times M}-1\right)}{3}+3^{\frac m2}
+=2^{2\times M+m}-\sum_{j=1}^{\frac m2}3^{j-1}\times 2^{2\times M+m-2\times j}
+\end{equation}
+We remark that this equation can be equivalent to the fourth form of the numbers which
+respect the Collatz conjecture and which have the form
+\begin{equation}
+3^{\frac m2+1}\times x_m+3^{\frac m2}=\Pf{\frac m2}{\frac m2}{p}{i}
+\end{equation}
+And in this case we have the equation
+\begin{equation}
+2^{2\times M+m}=2^{\sum_{i=0}^{\frac m2}p_i}
+\end{equation}
+and we have also the equation
+\begin{equation}
+2^{2\times M+m-2\times j}=2^{\sum_{i=j}^{\frac m2}p_i}\quad\text{for any natural number }j\text{ with }1\le j\le\frac m2
+\end{equation}
+We have also
+\begin{equation}
+p_{\frac m2}=2\times M\quad\text{and}\quad p_0=2.
+\end{equation}
+Like in the previous case, we should have, for any natural number $j$ with
+$1\le j\le\frac m2$,
+\begin{equation}
+2^{2\times M+m-2\times j}\ge 2^{\frac m2-j+1}
+\end{equation}
+We have
+\begin{equation}
+2\times M+m-2\times j-\left(\frac m2-j+1\right)=2\times M+\frac m2-1-j
+\end{equation}
+And for any natural number $j$ with $1\le j\le\frac m2$, we have
+\begin{equation}
+2\times M+\frac m2-1-j\ge 2\times M-1\ge 0\quad\text{since }M>0.
+\end{equation}
+Consequently, we have always
+\begin{equation}
+2^{2\times M+m-2\times j}\ge 2^{\frac m2-j+1},
+\end{equation}
+and this means that we respect indeed that
+$2^{\sum_{i=j}^{\frac m2}p_i}\ge 2^{\frac m2-j+1}$ for any natural number $j$ with
+$1\le j\le\frac m2$.
+
+Finally, we conclude that all the natural numbers which respect the second form of the
+numbers which respect the Collatz conjecture and which have the form
+$x_m=\frac{2^{2\times M}-1}{3}$ $\forall M\in\N\setminus\{0\}$ respect also the fourth form
+\[3^{\frac m2+1}\times x_m+3^{\frac m2}=\Pf{\frac m2}{\frac m2}{p}{i}\]
+with $m$ even and $m>3$.
+
+However, this result does not mean that $x_m=\frac{2^{2\times M}-1}{3}$ should be
+transformed to the number $x_0=\frac{2^{2N}-1}{3}$ of the Collatz conjecture process after
+exactly $m$ operations, as explained in \citep{Louiz2024}, since we have already
+$x_m=x_0=\frac{2^{2\times M}-1}{3}$ without any operations related to the process of the
+Collatz conjecture. Furthermore, in this case the representation of the natural number
+$x_m$ with the fourth form is not unique, since the natural number $m$ can take any even
+value with $m>3$.
+
+%==========================================================================
+\section{The third form is included in the fifth form}
+We proved that
+\begin{equation}
+3^{\frac m2+1}\times\frac{\left(2^{2\times M}-1\right)}{3}+3^{\frac m2}
+=2^{2\times M+m}-\sum_{j=1}^{\frac m2}3^{j-1}\times 2^{2\times M+m-2\times j}
+=\Pf{\frac m2}{\frac m2}{p}{i}
+\end{equation}
+where $p_{\frac m2}=2\times M$ and $p_0=2$, $M$ can be any strictly positive natural number
+and $m=n+1$ is an even natural number with $m>3$. Let us consider that $p$ is a strictly
+positive natural number. And thus, we have also
+\begin{equation}
+2^{p}\times\left(3^{\frac m2+1}\times\frac{\left(2^{2\times M}-1\right)}{3}+3^{\frac m2}\right)
+=2^{p}\times\left(2^{2\times M+m}-\sum_{j=1}^{\frac m2}3^{j-1}\times 2^{2\times M+m-2\times j}\right)
+\end{equation}
+Consequently, we have
+\begin{equation}
+3^{\frac m2+1}\times\frac{\left(2^{2\times M+p}-2^{p}\right)}{3}
+=2^{2\times M+m+p}-3^{\frac m2}\times 2^{p}-\sum_{j=1}^{\frac m2}3^{j-1}\times 2^{2\times M+m+p-2\times j}
+\end{equation}
+Let us consider that
+\begin{equation}
+\frac m2+1=\frac{L+1}{2}\ \Rightarrow\ L=m+1=n+2\quad\text{where }L\text{ is an odd natural number with }L>4.
+\end{equation}
+We get
+\begin{equation}
+3^{\frac{L+1}{2}}\times\frac{\left(2^{2\times M+p}-2^{p}\right)}{3}
+=2^{2\times M+L+p-1}-3^{\frac{L+1}{2}-1}\times 2^{p}-\sum_{j=1}^{\frac{L+1}{2}-1}3^{j-1}\times 2^{2\times M+L+p-1-2\times j}
+\end{equation}
+Let us consider that $p=p_{\frac{L+1}{2}}$, and since the number $p$ is added to the powers of
+all the numbers $2^{2\times M+L+p-1-2\times j}$ for any natural number $j$ with
+$1\le j\le\frac{L+1}{2}-1$, we remark that this equation can be equivalent to the fifth form
+of the numbers which respect the Collatz conjecture and which have the form
+\begin{equation}
+3^{\frac{L+1}{2}}\times x_L=\Pf{\frac{L+1}{2}}{\frac{L+1}{2}}{p}{i}
+\end{equation}
+And in this case we have the equation $2^{2\times M+L+p-1}=2^{\sum_{i=0}^{\frac{L+1}{2}}p_i}$
+and we have also these equations:
+\begin{equation}
+\begin{split}
+&2^{2\times M+L+p-1-2\times j}=2^{\sum_{i=j}^{\frac{L+1}{2}}p_i}\ \text{ for any natural number }j\text{ with }1\le j\le\frac{L+1}{2}-1\\
+&\text{and}\quad 2^{p}=2^{p_{\frac{L+1}{2}}}.
+\end{split}
+\end{equation}
+We can also remark in this case that $p_0=2$ and, like in the previous cases, we should have
+\begin{equation}
+2^{2\times M+L+p-1-2\times j}\ge 2^{\frac{L+1}{2}-j+1}\quad\text{for any natural number }j\text{ with }1\le j\le\frac{L+1}{2}-1.
+\end{equation}
+We have
+\begin{equation}
+2\times M+L+p-1-2\times j-\left(\frac{L+1}{2}-j+1\right)=2\times M+\frac L2+p-2-\frac12-j
+\end{equation}
+And for any natural number $j$ with $1\le j\le\frac{L+1}{2}-1$, we have
+\begin{equation}
+2\times M+\frac L2+p-2-\frac12-j\ge 2\times M+p-2\ge 0\quad\text{since }M>0\text{ and }p>0.
+\end{equation}
+Consequently, we have always $2^{2\times M+L+p-1-2\times j}\ge 2^{\frac{L+1}{2}-j+1}$, and
+since we have $p>0$ this means that we respect indeed that
+\begin{equation}
+2^{\sum_{i=j}^{\frac{L+1}{2}}p_i}\ge 2^{\frac{L+1}{2}-j+1}\quad\text{for any natural number }j\text{ with }1\le j\le\frac{L+1}{2}.
+\end{equation}
+Finally, we conclude that all the natural numbers which respect the third form of the
+numbers which respect the Collatz conjecture and which have the form
+$3\times x_L=2^{2\times M+p}-2^{p}$ $\forall M\in\N\setminus\{0\}$ with $p>0$ respect also
+the fifth form
+\[3^{\frac{L+1}{2}}\times x_L=\Pf{\frac{L+1}{2}}{\frac{L+1}{2}}{p}{i}\]
+with $L$ odd and $L>4$.
+
+However, this result does not mean that $x_L=\frac{2^{2\times M+p}-2^{p}}{3}$ should be
+transformed to the number $x_0=\frac{2^{2N}-1}{3}$ of the Collatz conjecture process after
+exactly $L$ operations, as explained in \citep{Louiz2024}, since only one operation of
+division by $2^{p}$ transforms $x_L$ to $x_0=\frac{2^{2N}-1}{3}$ in the process of the
+Collatz conjecture. Furthermore, in this case the representation of the natural number
+$x_L$ with the fifth form is not unique, since the natural number $L$ can take any odd
+value with $L>4$.
+
+%==========================================================================
+\section{Simple arithmetic statements equivalent to the proof of the Collatz conjecture}
+We could prove that all the strictly positive natural numbers which respect the Collatz
+conjecture can be expressed with only the following two simplified forms.
+
+\smallskip\noindent The first final form:
+\begin{equation}
+3^{N+1}\times x_{2N}+3^{N}=\Pf{N}{N}{p}{i}
+\end{equation}
+with $N$ a natural number with $N\ge 2$.
+
+\smallskip\noindent And the second final form:
+\begin{equation}
+3^{M}\times x_{2M-1}=\Pf{M}{M}{p}{i}
+\end{equation}
+with $M$ a natural number with $M\ge 2$.
+
+\smallskip\noindent Here the numbers $x_{2N}$ and $x_{2M-1}$ are natural numbers which
+respect the Collatz conjecture and the numbers $p_i$ can be any natural numbers which
+respect $p_i\ge 1$ $\forall i\in\N\setminus\{0\}$ and $p_0=2\times A$, where $A$ can be any
+strictly positive natural number.
+
+We remarked that, for any natural number $x_{2N}$ or $x_{2M-1}$ that can be expressed in
+the first form, in the second form or in the third form described in the introduction and
+in \citep{Louiz2024}, the expression of this natural number $x_{2N}$ or $x_{2M-1}$ is not unique in the fourth or
+in the fifth form, because we can use in that representation any natural number $N$ or $M$
+with $N\ge 2$ and $M\ge 2$.
+
+In order to prove the Collatz conjecture we should only prove that each strictly positive
+natural number can be expressed with one of these two simplified final forms. However, we
+can remark that in the first final form $x_{2N}$ should be an odd natural number, whereas
+in the second final form $x_{2M-1}$ should be an even natural number. And thus, in order to
+prove the Collatz conjecture we should only prove that each strictly positive odd natural
+number can be expressed with the first final form and that each strictly positive even
+natural number can be expressed with the second final form.
+
+We can remark that, if $x$ is a strictly positive even natural number with $x\ne 2^{M}$,
+then $x=2^{p}\times x_c$, where $x_c$ is a strictly positive odd natural number and $p$ is a
+strictly positive natural number. And if $x_c$ can be expressed with the first final form,
+then we have
+\begin{equation}
+2^{p}\times\left(3^{N+1}\times x_c+3^{N}\right)=2^{p}\times\left(\Pf{N}{N}{p}{i}\right)
+\end{equation}
+And this means that
+\begin{equation}
+3^{N+1}\times x=2^{p}\times\left(\Pf{N}{N}{p}{i}\right)-3^{N}\times 2^{p}
+\end{equation}
+And this is equivalent to
+\begin{equation}
+3^{N+1}\times x=2^{\sum_{i=0}^{N+1}p_i}-\sum_{j=1}^{N}\left(3^{j-1}\times 2^{\sum_{i=j}^{N+1}p_i}\right)-3^{N}\times 2^{p}
+=2^{\sum_{i=0}^{N+1}p_i}-\sum_{j=1}^{N+1}\left(3^{j-1}\times 2^{\sum_{i=j}^{N+1}p_i}\right)
+\end{equation}
+where
+\begin{equation}
+p_{N+1}=p.
+\end{equation}
+And since we proved that all the numbers of the form $x_n=2^{M}$ $\forall M\in\N\setminus\{0\}$
+can be expressed with the second final form, we conclude finally that, in order to prove the
+Collatz conjecture, we should only prove that each strictly positive odd natural number can
+be expressed with the first final form
+\[3^{N+1}\times x_{2N}+3^{N}=\Pf{N}{N}{p}{i}\]
+with $N$ a natural number with $N\ge 2$, where $x_{2N}$ is the studied strictly positive
+odd natural number and the numbers $p_i$ can be any natural numbers which respect
+$p_i\ge 1$ $\forall i\in\N\setminus\{0\}$ and $p_0=2\times A$, where $A$ can be any strictly
+positive natural number.
+
+%==========================================================================
+\section{An infinite set of odd numbers respecting the first final form}\label{sec:infinite}
+Many may think that it is complicated to express any odd natural number with the first
+final form demonstrated in this article without the help of artificial intelligence or
+other mathematical software. However, there are many sequences and series of natural
+numbers which are equivalent to the set of the odd natural numbers and which can simplify
+this task. Furthermore, we can find many arithmetic developments of natural numbers which
+are easy recurrence relations. Let us give an example of a recurrence relation which
+develops a natural number into a series.
+
+Let us consider a strictly positive natural number $N$. We study the number $4^{N}$ in
+order to deduce a useful result. For $N=1$, $N=2$ and $N=3$ we have
+\begin{equation}
+4^{1}=3\times 4^{0}+1
+\end{equation}
+\begin{equation}
+4^{2}=3\times 4^{1}+3\times 4^{0}+1
+\end{equation}
+\begin{equation}
+4^{3}=3\times 4^{2}+3\times 4^{1}+3\times 4^{0}+1
+\end{equation}
+We can guess the recurrence relation
+\begin{equation}
+4^{N}=1+3\times\sum_{i=0}^{N-1}4^{i}.
+\end{equation}
+Now let us consider that this recurrence relation is correct up to the number $N$ and let us
+prove it for $N+1$. We have
+\begin{equation}
+4^{N+1}=4\times 4^{N}=4+3\times\sum_{i=0}^{N-1}4^{i+1}=4+3\times\sum_{i=1}^{N}4^{i}=4-3+3\times\sum_{i=0}^{N}4^{i}=1+3\times\sum_{i=0}^{N}4^{i}
+\end{equation}
+And thus, we conclude that
+\begin{equation}
+\frac{4^{N+1}-1}{3}=\sum_{i=0}^{N}4^{i}
+\end{equation}
+And this means that our recurrence relation $4^{N}=1+3\times\sum_{i=0}^{N-1}4^{i}$ is
+correct for any strictly positive natural number $N$.
+
+This recurrence relation is an example that develops a number into a sum of other numbers,
+and it can be expressed also from the identity $A^{N}-1=(A-1)\times\sum_{i=0}^{N-1}A^{i}$.
+However, let us use it in the following proof.
+
+Let us consider $y_B=\frac{2^{2B}-1}{3}$, where $B$ is a strictly positive natural number.
+We have that $y_B$ is a natural number satisfying the following formula:
+\begin{equation}
+3^{N+1}\times y_B+3^{N}=3^{N+1}\times\frac{2^{2B}-1}{3}+3^{N}=3^{N}\times 2^{2B}
+\end{equation}
+where $N$ is a natural number with $N\ge 2$. And we proved above that
+\begin{equation}
+3^{\frac{n+1}{2}}\times 2^{M}=2^{M+n+1}-\sum_{j=1}^{\frac{n+1}{2}}3^{j-1}\times 2^{M+n+1-2\times j}
+\end{equation}
+where $n$ is an odd natural number with $n>2$ and $M$ is a strictly positive natural number.
+And thus, we have
+\begin{equation}
+3^{N+1}\times y_B+3^{N}=2^{2B+2N}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}
+\end{equation}
+where $B$ and $N$ are strictly positive natural numbers with $2B=M$ and
+$N=\frac{n+1}{2}\ge 2$. And we have
+\begin{equation}
+y_B=\frac{2^{2B}-1}{3}=\frac{4^{B}-1}{3}\quad\text{whereas we proved above that}\quad
+\frac{4^{B}-1}{3}=\sum_{i=0}^{B-1}4^{i}
+\end{equation}
+And thus, the infinite set of odd numbers $y_B=\sum_{i=0}^{B-1}4^{i}$, where $B$ can be any
+strictly positive natural number, can all be expressed with the first final form
+\begin{equation}
+3^{N+1}\times x_{2N}+3^{N}=\Pf{N}{N}{p}{i}
+\end{equation}
+where $x_{2N}=y_B=\sum_{i=0}^{B-1}4^{i}$ and $N$ is a natural number with $N\ge 2$, by
+remarking that
+\begin{equation}
+\sum_{i=0}^{N}p_i=2B+2N\quad\text{where }p_0=2.
+\end{equation}
+This demonstrated infinite set of odd numbers may serve as a basis in order to help the
+readers to prove that all the other odd natural numbers $x_{2N}$ can be expressed with the
+first final form $3^{N+1}\times x_{2N}+3^{N}=\Pf{N}{N}{p}{i}$.
+
+\subsection*{First corollary}
+We propose in this corollary a method to find an infinite amount of numbers which respect
+the Collatz conjecture by using the result above. Let us consider
+\[y_C=C+\sum_{i=0}^{B-1}4^{i},\]
+where $C$ is a strictly positive natural number and $B$ can be any strictly positive
+natural number. We have consequently
+\begin{equation}
+3^{N+1}\times y_C+3^{N}=3^{N+1}\times C+2^{2B+2N}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}
+\end{equation}
+Let us consider that the new number $y_C$ respects the Collatz conjecture by respecting the
+first final form with
+\begin{equation}
+3^{N+1}\times y_C+3^{N}=2^{2B+2N+2D}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}
+\end{equation}
+where $D$ is a strictly positive natural number. We have in this case
+\begin{equation}
+\sum_{i=0}^{N}p_i=2B+2N+2D\quad\text{where }p_0=2+2D.
+\end{equation}
+And we have
+\begin{equation}
+2^{2B+2N+2D}=3^{N+1}\times C+2^{2B+2N}
+\end{equation}
+And thus, we have
+\begin{equation}
+2^{2B+2N}\times\left(4^{D}-1\right)=3^{N+1}\times C
+\end{equation}
+Let us consider that
+\begin{equation}
+C=E\times 2^{2B+2N}\quad\text{where }E\text{ is a natural number.}
+\end{equation}
+Hence we get the equation
+\begin{equation}
+4^{D}=3^{N+1}\times E+1.
+\end{equation}
+Now let us try to find examples of values for the natural numbers $N$, $E$ and $D$ which
+respect this equation. We can guess a first easy example of values, which is $N=1$, $E=7$
+and $D=3$. However, the number $N$ is only interesting for us if $N\ge 2$. Hence, we guess
+a second interesting example of values:
+\begin{equation}
+N=2\ \text{ and }\ E=9709\ \text{ and }\ D=9.
+\end{equation}
+In this case, we have
+\begin{equation}
+C=E\times 2^{2B+2N}=9709\times 2^{2B+4}=155344\times 4^{B}
+\end{equation}
+Now let us verify if the new number $y_C$ really respects the first final form of the
+Collatz conjecture, where we have
+\begin{equation}
+y_C=C+\sum_{i=0}^{B-1}4^{i}=155343\times 4^{B}+\sum_{i=0}^{B}4^{i}.
+\end{equation}
+We have
+\begin{equation}
+3^{N+1}\times y_C+3^{N}=3^{3}\times\left(155343\times 4^{B}+\sum_{i=0}^{B}4^{i}\right)+3^{2}
+=3^{3}\times 155343\times 4^{B}+3^{2}\times 4^{B+1}=4194297\times 4^{B}
+\end{equation}
+And we have
+\begin{equation}
+\begin{split}
+2^{2B+2N+2D}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}
+&=2^{22}\times 4^{B}-4^{B+1}-3\times 4^{B}\\
+&=\left(2^{22}-4-3\right)\times 4^{B}=4194297\times 4^{B}
+\end{split}
+\end{equation}
+And thus, we conclude that the set of all the numbers
+$y_C=155343\times 4^{B}+\sum_{i=0}^{B}4^{i}$, where $B$ can be any strictly positive natural
+number, respect the Collatz conjecture by respecting the first final form
+\[3^{N+1}\times y_C+3^{N}=2^{2B+2N+2D}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}\]
+where $N=2$ and $D=9$.
+
+Let us prove also that $y_C=155343\times 4^{B}+\sum_{i=0}^{B}4^{i}$ can never be expressed by
+the second form of the numbers that respect the Collatz conjecture, which is
+$\frac{2^{2\times M}-1}{3}$. In fact, we have
+\begin{equation}
+y_C\times 3+1=3\times 155343\times 4^{B}+4^{B+1}=466033\times 4^{B}=466033\times 2^{2B}\ne 2^{2\times M}
+\end{equation}
+And thus, we have always $y_C\ne\frac{2^{2\times M}-1}{3}$. Consequently, the number $y_C$
+can never be expressed by the second form of the numbers that respect the Collatz
+conjecture. And thus, the demonstrated expression of the first final form is correct for a
+specific value of $N$, namely $N=2$, when we express each number of the set of numbers
+$y_C=155343\times 4^{B}+\sum_{i=0}^{B}4^{i}$ in the first final form.
+
+We should remind that we did not consider that all the odd numbers should respect the
+formula
+\[3^{N+1}\times y_C+3^{N}=2^{2B+2N+2D}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}\]
+because in the first final form of the Collatz conjecture we may have
+\begin{equation}
+\sum_{i=j}^{N}p_i\neq 2B+2N-2\times j.
+\end{equation}
+However, the readers may find other examples of values for $N$, $E$ and $D$ for different
+other sets of numbers $y_C$, which are sets of numbers that change with the natural number
+$B$ and which respect the Collatz conjecture without the change of the value of $N$.
+Another more general study is described in the following corollary.
+
+\subsection*{Second corollary}
+We consider, like in the first corollary above, a new strictly positive natural number
+$Y_{CN}$ with
+\begin{equation}
+3^{N+1}\times Y_{CN}+3^{N}=3^{N+1}\times C+2^{2B+2N}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}
+\end{equation}
+Let us consider again that $Y_{CN}$ respects the Collatz conjecture by respecting the first
+final form with
+\begin{equation}
+3^{N+1}\times Y_{CN}+3^{N}=2^{2B+2N+2D}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}
+\end{equation}
+Like in the first corollary above, we have in this case
+$\sum_{i=0}^{N}p_i=2B+2N+2D$ where $p_0=2+2D$. And we have
+\begin{equation}
+2^{2B+2N+2D}=3^{N+1}\times C+2^{2B+2N}
+\end{equation}
+And thus, we have
+\begin{equation}
+2^{2B+2N}\times\left(4^{D}-1\right)=3^{N+1}\times C
+\end{equation}
+Let us consider again that
+\begin{equation}
+C=E\times 2^{2B+2N}\quad\text{where }E\text{ is a natural number.}
+\end{equation}
+Hence we get the equation
+\begin{equation}
+4^{D}=3^{N+1}\times E+1.
+\end{equation}
+Let us consider that $D=3^{N}$ and we get the equation
+\begin{equation}
+E=\frac{4^{3^{N}}-1}{3^{N+1}}.
+\end{equation}
+This equation will be very useful if $E$ is always a natural number. Let us investigate this
+equation by using the Fermat--Euler theorem. We have that the number $2$ is coprime to the
+number $3^{N+1}$, where $N$ can be any strictly positive natural number with $N\ge 2$. And
+the Euler totient function of $3^{N+1}$ is
+\begin{equation}
+\phi\left(3^{N+1}\right)=3^{N+1}\left(1-\frac13\right)=2\times 3^{N}.
+\end{equation}
+Hence, we have by the theorem
+\begin{equation}
+2^{\phi\left(3^{N+1}\right)}\equiv 1\bmod 3^{N+1}.
+\end{equation}
+And thus, we proved that
+\begin{equation}
+4^{3^{N}}\equiv 1\bmod 3^{N+1}.
+\end{equation}
+We conclude that
+\begin{equation}
+E=\frac{4^{3^{N}}-1}{3^{N+1}}\quad\text{is always a natural number.}
+\end{equation}
+And this means that $E=\frac{4^{3^{N}}-1}{3^{N+1}}$ and $D=3^{N}$ are always solutions of the
+equation of this corollary, which is $4^{D}=3^{N+1}\times E+1$, where $N$ can be any
+strictly positive natural number with $N\ge 2$. We have generally in this case
+\begin{equation}
+C=E\times 2^{2B+2N}=\frac{4^{3^{N}}-1}{3^{N+1}}\times 2^{2B+2N}.
+\end{equation}
+We consider, like in the first corollary above, that
+\begin{equation}
+Y_{CN}=C+\sum_{i=0}^{B-1}4^{i}=\frac{4^{3^{N}}-1}{3^{N+1}}\times 2^{2B+2N}+\sum_{i=0}^{B-1}4^{i}
+\end{equation}
+Now let us verify if the new number $Y_{CN}$ really respects the first final form of the
+Collatz conjecture. We have
+\begin{equation}
+\begin{split}
+3^{N+1}\times Y_{CN}+3^{N}&=3^{N+1}\times\left(\frac{4^{3^{N}}-1}{3^{N+1}}\times 2^{2B+2N}+\sum_{i=0}^{B-1}4^{i}\right)+3^{N}\\
+&=\left(4^{3^{N}}-1\right)\times 2^{2B+2N}+3^{N+1}\times\sum_{i=0}^{B-1}4^{i}+3^{N}
+\end{split}
+\end{equation}
+And we know that
+\begin{equation}
+3^{N+1}\times\sum_{i=0}^{B-1}4^{i}=3^{N}\times\left(4^{B}-1\right)=3^{N}\times 4^{B}-3^{N}
+\end{equation}
+Hence, we have
+\begin{equation}
+3^{N+1}\times Y_{CN}+3^{N}=\left(4^{3^{N}}-1\right)\times 2^{2B+2N}+3^{N}\times 4^{B}=4^{B}\times\left(4^{3^{N}+N}-4^{N}+3^{N}\right)
+\end{equation}
+And we have
+\begin{equation}
+\begin{split}
+2^{2B+2N+2D}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}
+&=4^{B}\times\left(4^{3^{N}+N}-\sum_{j=1}^{N}3^{j-1}\times 4^{N-j}\right)\\
+&=4^{B}\times\left(4^{3^{N}+N}-\sum_{j=0}^{N-1}3^{j}\times 4^{N-j-1}\right)
+\end{split}
+\end{equation}
+And we know that
+\begin{equation}
+\sum_{j=0}^{N-1}3^{j}\times 4^{N-j-1}=4^{N}-3^{N}
+\end{equation}
+Hence, we have
+\begin{equation}
+2^{2B+2N+2D}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}=4^{B}\times\left(4^{3^{N}+N}-4^{N}+3^{N}\right)
+\end{equation}
+And thus, we conclude that the set of all the numbers
+$Y_{CN}=\frac{4^{3^{N}}-1}{3^{N+1}}\times 2^{2B+2N}+\sum_{i=0}^{B-1}4^{i}$, where $B$ can be
+any strictly positive natural number, respect the Collatz conjecture by respecting the first
+final form
+\[3^{N+1}\times Y_{CN}+3^{N}=2^{2B+2N+2\times 3^{N}}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}\]
+where $N$ can be any strictly positive number with $N\ge 2$.
+
+Let us prove that $Y_{CN}=\frac{4^{3^{N}}-1}{3^{N+1}}\times 2^{2B+2N}+\sum_{i=0}^{B-1}4^{i}$
+can never be expressed by the second form of the numbers that respect the Collatz conjecture,
+which is $\frac{2^{2\times M}-1}{3}$. In fact, we have
+\begin{equation}
+Y_{CN}\times 3+1=\frac{4^{3^{N}}-1}{3^{N}}\times 2^{2B+2N}+4^{B}=2^{2B}\times\left(\frac{4^{3^{N}}-1}{3^{N}}\times 2^{2N}+1\right)\ne 2^{2M}
+\end{equation}
+\begin{equation}
+\text{this is because the natural number }\left(\frac{4^{3^{N}}-1}{3^{N}}\times 2^{2N}+1\right)\text{ is an odd number.}
+\end{equation}
+And thus, we have always $Y_{CN}\ne\frac{2^{2\times M}-1}{3}$. Consequently, each number of
+the set $Y_{CN}$ can never be expressed by the second form of the numbers that respect the
+Collatz conjecture. And thus, when we express each number of the set of numbers
+$Y_{CN}=\frac{4^{3^{N}}-1}{3^{N+1}}\times 2^{2B+2N}+\sum_{i=0}^{B-1}4^{i}$ with the
+demonstrated expression of the first final form, we use a specific value of $N$ that changes
+with the change of $Y_{CN}$.
+
+%==========================================================================
+\section{A contradiction argument for the numbers $4\times B+1$ and $4\times B-1$}\label{sec:contra}
+
+\subsection{Setting}
+In order to prove the Collatz conjecture, we should only prove that each strictly positive
+odd natural number can be expressed with the first final form (Section~5)
+\[\Fone,\]
+with $N$ a natural number with $N\ge 2$, where $x_{2N}$ is the studied strictly positive odd natural number and the numbers $p_i$ can
+be any natural numbers which respect $p_i\ge 1$ $\forall i\in\N\setminus\{0\}$ and
+$p_0=2\times A$, where $A$ can be any strictly positive natural number. By Section~3, the
+expression of the first final form of a number is not unique: if
+$3^{N+1}\times x_{2N}+3^{N}=\Pf{N}{N}{p}{i}$ then also
+$3^{M+1}\times x_{2N}+3^{M}=\Pf{M}{M}{q}{i}$ with $M>N$, where $q_k\ge 1$ for
+$k\in\N\setminus\{0\}$, $q_0=2\times M'$ ($M'$ a strictly positive natural number),
+$q_k=2$ for $0\le k\le M-N-1$ and $p_{k-(M-N)}=q_k$ for $M-N\le k\le M$.
+
+In this section we consider that the sets of numbers $4\times B+1$ and $4\times B-1$ both
+respect the Collatz conjecture, with
+\begin{gather*}
+3^{N+1}\times(4\times B+1)+3^{N}=\Pf{N}{N}{p}{i}\quad\text{and}\\
+3^{M+1}\times(4\times B-1)+3^{M}=\Pf{M}{M}{q}{i}.
+\end{gather*}
+This implies that, in the expressions of the first final form, if $q_{N-1}=6$ then we have
+$p_N=4$ and $p_{N-1}=1$ with $p_i=q_i$ for $0\le i\le N-2$. This fact implies a
+contradiction that proves that the Collatz conjecture is not true for all strictly positive
+natural numbers.
+
+\subsection{The consideration of the approach and its useful result}
+Let us consider that
+\begin{equation}
+3^{N+1}\times(4\times B+1)+3^{N}=\Pf{N}{N}{p}{i}
+\end{equation}
+where $4\times B+1$ is a natural number that respects the Collatz conjecture and $B$ is a
+natural number with $B>0$. Let us consider also that
+\begin{equation}
+3^{M+1}\times(4\times B-1)+3^{M}=\Pf{M}{M}{q}{i}
+\end{equation}
+where $2\times B-1$ respects the Collatz conjecture too. This implies that $q_N=1$ in the
+expression of the first final form, because $3^{M+1}\times(4\times B-1)+3^{M}$ is only
+divisible by $2$ and not $4$.
+
+We should remember that
+\begin{equation}
+4\times B+1=2\times(2\times A)+1\quad\text{and}\quad 4\times B-1=2\times(2\times A-1)+1
+\end{equation}
+with $A$ a strictly positive natural number with $A>1$. Hence, the sets of numbers
+$4\times B+1$ and $4\times B-1$ are separate sets.
+
+Since $M$ and $N$ are not unique, as explained above, we can also make sure that, in the two
+expressions of the first final form that we use in this section,
+\begin{equation}
+M=N\quad\text{with }N>2
+\end{equation}
+We have also
+\begin{equation}
+3^{M+1}\times(4\times B-1)+3^{M}=3^{M}\times(12\times B-2)=3^{N}\times(12\times B+4)-2\times 3^{N+1}.
+\end{equation}
+And we have
+\begin{equation}
+\begin{split}
+3^{N+1}\times(4\times B+1)+3^{N}&=\Pf{N}{N}{p}{i}\\
+&=\Pf{M}{M}{q}{i}+2\times 3^{N+1}.
+\end{split}
+\end{equation}
+And since we have $q_N=1$ and $M=N$, then we have
+\begin{equation}
+\begin{split}
+\Pf{N}{N}{p}{i}
+={}&2^{\sum_{i=0}^{N}q_i}-\sum_{j=1}^{N-1}\left(3^{j-1}\times 2^{\sum_{i=j}^{N}q_i}\right)\\
+&+2\times 3^{N+1}-2\times 3^{N-1}
+\end{split}
+\end{equation}
+And thus, we have
+\begin{equation}
+\begin{split}
+&2^{\sum_{i=0}^{N}p_i}-\sum_{j=1}^{N-1}\left(3^{j-1}\times 2^{\sum_{i=j}^{N}p_i}\right)-2^{p_N}\times 3^{N-1}\\
+&\qquad=2^{\sum_{i=0}^{N}q_i}-\sum_{j=1}^{N-1}\left(3^{j-1}\times 2^{\sum_{i=j}^{N}q_i}\right)+16\times 3^{N-1}
+\end{split}
+\end{equation}
+Hence
+\begin{equation}
+\begin{split}
+&2^{\sum_{i=0}^{N}p_i}-\sum_{j=1}^{N-1}\left(3^{j-1}\times 2^{\sum_{i=j}^{N}p_i}\right)-2^{p_N}\times 3^{N-1}\\
+&\qquad=2^{\sum_{i=0}^{N}q_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{\sum_{i=j}^{N}q_i}\right)-2^{q_{N-1}+q_N}\times 3^{N-2}+16\times 3^{N-1}
+\end{split}
+\end{equation}
+We consider that $q_{N-1}\ge 4$. Consequently, by making a comparison of parity between the
+two sides of the equation above, dividing by the powers of two, we remark that
+\begin{equation}
+p_N=4.
+\end{equation}
+Hence, we get
+\begin{equation}
+\begin{split}
+&2^{-4+\sum_{i=0}^{N}p_i}-\sum_{j=1}^{N-1}\left(3^{j-1}\times 2^{-4+\sum_{i=j}^{N}p_i}\right)\\
+&\qquad=2^{-4+\sum_{i=0}^{N}q_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{-4+\sum_{i=j}^{N}q_i}\right)-2^{-3+q_{N-1}}\times 3^{N-2}+2\times 3^{N-1}
+\end{split}
+\end{equation}
+And thus
+\begin{equation}
+\begin{split}
+&2^{-4+\sum_{i=0}^{N}p_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{-4+\sum_{i=j}^{N}p_i}\right)-2^{p_{N-1}}\times 3^{N-2}\\
+&\qquad=2^{-4+\sum_{i=0}^{N}q_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{-4+\sum_{i=j}^{N}q_i}\right)+2\times\left(3-2^{-4+q_{N-1}}\right)\times 3^{N-2}
+\end{split}
+\end{equation}
+However, if $q_{N-1}>4$ then we have
+\begin{equation}
+p_{N-1}=1
+\end{equation}
+and we get
+\begin{equation}
+\begin{split}
+&2^{-5+\sum_{i=0}^{N}p_i}-\sum_{j=1}^{N-3}\left(3^{j-1}\times 2^{-5+\sum_{i=j}^{N}p_i}\right)-2^{p_{N-2}}\times 3^{N-3}\\
+&\qquad=2^{-5+\sum_{i=0}^{N}q_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{-5+\sum_{i=j}^{N}q_i}\right)+\left(4-2^{-4+q_{N-1}}\right)\times 3^{N-2}
+\end{split}
+\end{equation}
+Hence, when the natural numbers $4\times B+1$ and $4\times B-1$ both respect the Collatz
+conjecture with $B>0$, we have always $q_N=1$, and if $q_{N-1}=6$ then we have
+\begin{equation}
+p_N=4\ \text{ and }\ p_{N-1}=1\ \text{ with }\ p_i=q_i\ \text{ for }\ 0\le i\le N-2.
+\end{equation}
+
+\subsection{The contradictions implied by the useful result of the consideration}
+Let us consider that the natural numbers of the forms $4\times B+1$ and $4\times B-1$ all
+respect the Collatz conjecture with $B>0$, and let us consider that $q_{N-1}=6$. We get
+consequently
+\begin{equation}
+\begin{split}
+3^{N+1}\times(4\times B+1)+3^{N}&=\Pf{N}{N}{p}{i}\\
+&=2^{\sum_{i=0}^{N}p_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{\sum_{i=j}^{N}p_i}\right)-3^{N-2}\times 2^{5}-3^{N-1}\times 2^{4}
+\end{split}
+\end{equation}
+This means that
+\begin{equation}
+\frac{3^{N+1}\times(4\times B+1)+3^{N}}{2^{5}}=2^{\sum_{i=0}^{N-2}p_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{\sum_{i=j}^{N-2}p_i}\right)-3^{N-2}-\frac{3^{N-1}}{2}
+\end{equation}
+And we have also
+\begin{equation}
+\begin{split}
+3^{N+1}\times(4\times B-1)+3^{N}&=\Pf{N}{N}{q}{i}\\
+&=2^{\sum_{i=0}^{N}q_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{\sum_{i=j}^{N}q_i}\right)-3^{N-2}\times 2^{7}-3^{N-1}\times 2^{1}
+\end{split}
+\end{equation}
+This means that
+\begin{equation}
+\frac{3^{N+1}\times(4\times B-1)+3^{N}}{2^{7}}=2^{\sum_{i=0}^{N-2}q_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{\sum_{i=j}^{N-2}q_i}\right)-3^{N-2}-\frac{3^{N-1}}{2^{6}}
+\end{equation}
+However, we have also
+\begin{equation}
+p_i=q_i\quad\text{for }0\le i\le N-2.
+\end{equation}
+Hence
+\begin{equation}
+2^{\sum_{i=0}^{N-2}p_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{\sum_{i=j}^{N-2}p_i}\right)=2^{\sum_{i=0}^{N-2}q_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{\sum_{i=j}^{N-2}q_i}\right)
+\end{equation}
+We get consequently
+\begin{equation}
+\frac{3^{N+1}\times(4\times B+1)+3^{N}}{2^{5}}-\frac{3^{N+1}\times(4\times B-1)+3^{N}}{2^{7}}=\frac{3^{N-1}}{2^{6}}-\frac{3^{N-1}}{2}
+\end{equation}
+We remark that
+\begin{equation}
+\frac{3^{N+1}\times(4\times B+1)+3^{N}}{2^{5}}-\frac{3^{N+1}\times(4\times B-1)+3^{N}}{2^{7}}>0
+\end{equation}
+but we have also
+\begin{equation}
+\frac{3^{N-1}}{2^{6}}-\frac{3^{N-1}}{2}<0.
+\end{equation}
+We conclude that this is a contradiction. And thus, we have always
+\begin{equation}
+q_{N-1}\ne 6.
+\end{equation}
+This means that, when the separate sets of numbers $4\times B+1$ and $4\times B-1$ with $B>0$
+both respect the Collatz conjecture, we have always
+\begin{equation}
+\frac{3^{N+1}\times(4\times B-1)+3^{N}}{2^{7}}\ne 2^{\sum_{i=0}^{N-2}q_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{\sum_{i=j}^{N-2}q_i}\right)-3^{N-2}-\frac{3^{N-1}}{2^{6}}
+\end{equation}
+Hence, we have
+\begin{equation}
+3^{N-1}\times\frac{9\times B-1}{2^{5}}+3^{N-2}\ne 2^{\sum_{i=0}^{N-2}q_i}-\sum_{j=1}^{N-2}\left(3^{j-1}\times 2^{\sum_{i=j}^{N-2}q_i}\right)
+\end{equation}
+for any natural number $N$ with $N>2$ and for any natural number $q_i$ that respects
+$q_i\ge 1$ $\forall i\in\N\setminus\{0\}$ with $i\le N-2$ and respects $q_0=2\times M'$,
+where $M'$ is a strictly positive natural number.
+
+Since this result is true for any natural number $N$ with $N>4$, we consider that $L=N-2$
+and we get
+\[3^{L+1}\times\frac{9\times B-1}{2^{5}}+3^{L}\ne 2^{\sum_{i=0}^{L}q_i}-\sum_{j=1}^{L}\left(3^{j-1}\times 2^{\sum_{i=j}^{L}q_i}\right)\]
+for any natural number $L$ with $L>2$ and for any natural number $q_i$ that respects
+$q_i\ge 1$ $\forall i\in\N\setminus\{0\}$ with $i\le N-2$ and respects $q_0=2\times M'$,
+where $M'$ is a strictly positive natural number. This means that the natural numbers of the
+form
+\begin{equation}
+\frac{9\times B-1}{2^{5}}\quad\text{do not respect the Collatz conjecture.}
+\end{equation}
+We can guess that, if $B=25$, then we have
+\begin{equation}
+\frac{9\times B-1}{2^{5}}=7
+\end{equation}
+This implies that the natural number $7$ does not respect the Collatz conjecture. However, we
+have $7=4\times C-1$ with $C=2$, and we considered that all the natural numbers of the form
+$4\times B-1$ respect the Collatz conjecture. And thus, we can conclude that, if
+$4\times B+1$ and $4\times B-1$ both respect the Collatz conjecture, then this fact leads to
+a contradiction.
+
+And thus, we conclude that not all the odd natural numbers can respect the Collatz
+conjecture at the same time. We conclude finally that the Collatz conjecture is not true for
+all strictly positive natural numbers. \hfill$\square$
+
+%==========================================================================
+\section{Summary and conclusion}
+We started this work by proving, thanks to a recurrence relation, that all the natural
+numbers which respect the first form of the numbers which respect the Collatz conjecture,
+$x_n=2^{M}$ $\forall M\in\N\setminus\{0\}$, respect also the fifth form
+\[3^{\frac{n+1}{2}}\times x_n=\Pf{\frac{n+1}{2}}{\frac{n+1}{2}}{p}{i}.\]
+We deduced that all the natural numbers which respect the second form,
+$x_m=\frac{2^{2\times M}-1}{3}$ $\forall M\in\N\setminus\{0\}$, respect also the fourth form
+\[3^{\frac m2+1}\times x_m+3^{\frac m2}=\Pf{\frac m2}{\frac m2}{p}{i},\]
+and that all the natural numbers which respect the third form,
+$3\times x_L=2^{2\times M+p}-2^{p}$ $\forall M\in\N\setminus\{0\}$ with $p>0$, respect also
+the fifth form $3^{\frac{L+1}{2}}\times x_L=\Pf{\frac{L+1}{2}}{\frac{L+1}{2}}{p}{i}$.
+
+We concluded that the proof of the Collatz conjecture is equivalent to proving that each
+strictly positive odd natural number can be expressed with the first final form
+\[3^{N+1}\times x_{2N}+3^{N}=\Pf{N}{N}{p}{i}\quad(N\ge 2),\]
+and that each strictly positive even natural number can be expressed with the second final
+form
+\[3^{M}\times x_{2M-1}=\Pf{M}{M}{p}{i}\quad(M\ge 2),\]
+where the numbers $x_{2N}$ and $x_{2M-1}$ are natural numbers which respect the Collatz
+conjecture and the numbers $p_i$ can be any natural numbers which respect $p_i\ge 1$
+$\forall i\in\N\setminus\{0\}$ and $p_0=2\times A$, with $A$ any strictly positive natural
+number. However, we finally concluded that, in order to prove the Collatz conjecture, we
+should only prove that each strictly positive odd natural number can be expressed with the
+first final form.
+
+We added two corollaries in which infinite sets of odd numbers respecting the first final
+form are proved:
+\begin{itemize}
+\item The first general set of numbers is $y_B=\sum_{i=0}^{B-1}4^{i}$, where $B$ can be any
+strictly positive natural number and $N$ is not unique. Furthermore, as a first corollary, we
+proposed a method to deduce other related infinite sets of numbers respecting the Collatz
+conjecture by using specific values of the natural number $N$. The proposed set of odd
+numbers is $y_C=155343\times 4^{B}+\sum_{i=0}^{B}4^{i}$, where $B$ can be any strictly
+positive natural number and $N$ is specific with $N=2$.
+\item The study in the second corollary is more general: for each natural number $N\ge 2$ we
+obtain a set of numbers respecting the Collatz conjecture by using specific values of $N$.
+The proposed set of odd numbers is
+$Y_{CN}=\frac{4^{3^{N}}-1}{3^{N+1}}\times 2^{2B+2N}+\sum_{i=0}^{B-1}4^{i}$, where $B$ and
+$N$ can be any strictly positive natural numbers with $N\ge 2$, and we have
+\[3^{N+1}\times Y_{CN}+3^{N}=2^{2B+2N+2\times 3^{N}}-\sum_{j=1}^{N}3^{j-1}\times 2^{2B+2N-2\times j}.\]
+This formula proves that each natural number $N\ge 2$ has many corresponding odd natural
+numbers $Y_{CN}$ that respect the Collatz conjecture. However, we remark that these odd numbers grow
+rapidly and this means that we may need big calculators in order to use this formula.
+\end{itemize}
+
+If we want to prove that each strictly positive odd natural number $x_{2N}$ can be
+expressed with the first final form, we should remember that the natural number $N$ is not a
+constant for all the numbers $x_{2N}$ and is not unique for a given $x_{2N}$, but we can
+choose the smallest possible natural number $N$ for each $x_{2N}$. In fact, we proved in
+Section~3 that if
+\[3^{N+1}\times x_{2N}+3^{N}=\Pf{N}{N}{p}{i}\]
+then we have also
+\[3^{M+1}\times x_{2N}+3^{M}=\Pf{M}{M}{q}{i}\]
+where $M$ is another natural number with $M>N$, the numbers $q_k$ respect $q_k\ge 1$
+$\forall k\in\N\setminus\{0\}$ and $q_0=2\times M'$ ($M'$ a strictly positive natural
+number), with $q_k=2$ for $0\le k\le M-N-1$ and $p_{k-(M-N)}=q_k$ for $M-N\le k\le M$. If
+$N$ is the smallest natural number satisfying the first final form for $x_{2N}$, all the
+other expressions are with $M=N+O$, where $O$ can be any strictly positive natural number.
+This means that infinitely many other expressions of the first final form can be built for
+the same number $x_{2N}$. Using a simple recurrence relation for the proof of the Collatz
+conjecture is therefore not an easy task. Furthermore, the set of numbers $Y_{CN}$ of the
+second corollary shows that the natural numbers $N$ do not always increase when the odd
+natural number $x_{2N}$ increases, since $B$ can be any strictly positive natural number.
+
+Consequently, for the proof that each strictly positive odd natural number $x_{2N}$ can be
+expressed with the first final form, we propose to use a sequence $N=Clz(2k+1)$, where $k$
+can be any strictly positive natural number, and we will have to prove that
+\[3^{Clz_{2k+1}+1}\times(2\times k+1)+3^{Clz_{2k+1}}=2^{\sum_{i=0}^{Clz_{2k+1}}p_i}-\sum_{j=1}^{Clz_{2k+1}}\left(3^{j-1}\times 2^{\sum_{i=j}^{Clz_{2k+1}}p_i}\right)\]
+where $Clz_{2k+1}=Clz(2k+1)$ is a sequence of natural numbers that depends only on the
+natural number $k$. We have always
+\[Clz(2k+1)=N=Clz(Y_{CN})=Clz\left(\frac{4^{3^{N}}-1}{3^{N+1}}\times 2^{2B+2N}+\sum_{i=0}^{B-1}4^{i}\right)\]
+where $N$ depends on each natural number $k$ by using the sequence $Clz$, we have always
+$Clz_{2k+1}\ge 2$, and $B$ can be any strictly positive natural number.
+
+In the appendix we added a new method to calculate all the possible values of the natural
+numbers $x_n=\frac{2^{2\times M}-1}{3}$ $\forall M\in\N\setminus\{0\}$; the proposed
+algorithm is useful without any divisions, just by using the demonstrated sequence.
+
+Finally, in Section~\ref{sec:contra} we considered that the separate sets of numbers
+$4\times B+1$ and $4\times B-1$ with $B>0$ both respect the Collatz conjecture, each with
+its first final form. This consideration implied that we have always $q_N=1$, and that if
+$q_{N-1}=6$ then $p_N=4$ and $p_{N-1}=1$ with $p_i=q_i$ for $0\le i\le N-2$. After that, we proved
+that $q_{N-1}=6$ leads to a contradiction. Finally, we concluded that the Collatz
+conjecture can't be true for all strictly positive natural numbers. The researchers of
+mathematics and the lovers of the Collatz conjecture should now focus on finding the first
+counterexample of the Collatz conjecture!
+
+%==========================================================================
+\appendix
+\section{A sequence related to the second form of the numbers which respect the Collatz conjecture}
+We proved in \citep{Louiz2024} a recurrence relation for natural numbers $k_n$ that is related
+to the second form of the numbers that respect the Collatz conjecture, and especially to the
+operation $3\times x_n+1=2^{p}$ that is the last operation of the Collatz conjecture before
+the last $p$ successive divisions by two. The number $x_n$ in this case is an odd number and
+\begin{equation}
+\begin{split}
+&3\times x_n+1=2^{p}\ \text{ is the last operation of the Collatz conjecture for }x_n\\
+&\text{before the last }p\text{ successive divisions by two.}
+\end{split}
+\end{equation}
+Hence, we consider that
+\begin{equation}
+x_n=2\times k_0+1\quad\text{where }k_0\text{ is a natural number.}
+\end{equation}
+We get consequently
+\begin{equation}
+2^{p}=3\times(2\times k_0+1)+1=6\times k_0+4
+\end{equation}
+Hence, when $p\ge 1$ we have
+\begin{equation}
+2^{p-1}=3\times k_0+2
+\end{equation}
+This means that $k_0$ is an even natural number. And thus, we consider that
+\begin{equation}
+k_0=2\times k_1\quad\text{where }k_1\text{ is a natural number.}
+\end{equation}
+We get consequently
+\begin{equation}
+2^{p}=6\times k_0+4=12\times k_1+4
+\end{equation}
+Hence, when $p\ge 2$ we have
+\begin{equation}
+2^{p-2}=3\times k_1+1
+\end{equation}
+This means that $k_1$ is an odd natural number. We keep substituting the odd and even numbers
+$k_n$ by expressions of $k_{n+1}$ and we remark that $k_2$ is an even natural number and
+$k_3$ is an odd natural number, etc., and we remark the following recurrence relation, which
+is easy to prove:
+\begin{equation}
+2^{p}=3\times 2^{n+1}\times k_n+2^{n+2}\quad\text{if }n\text{ is an even natural number}
+\end{equation}
+and
+\begin{equation}
+2^{p}=3\times 2^{n+1}\times k_n+2^{n+1}\quad\text{if }n\text{ is an odd natural number.}
+\end{equation}
+We know that if $p=4$ then $k_3=0\Rightarrow k_2=0\Rightarrow k_1=1\Rightarrow k_0=2$. And
+thus
+\begin{equation}
+x_n=2\times k_0+1=5.
+\end{equation}
+And we can verify that
+\begin{equation}
+3\times x_n+1=16=2^{4}.
+\end{equation}
+Consequently, we remark that from this recurrence relation we can conclude the following
+sequence of natural numbers $(k_n)_{n\in\N}$, which respects
+$3\times k_0=2^{p-1}-2$ and $2\times k_{n+1}=k_n-V_n$, where $(V_n)_{n\in\N}$ is a sequence
+defined by $V_n=0$ if $n$ is even and by $V_n=1$ if $n$ is odd. Furthermore, this sequence
+of natural numbers respects the fact that $x_n=2\times k_0+1$.
+
+And thus, we can use this sequence starting from $n=N$ where $k_N=0$. We have in this case
+$N=p-1$ and we can calculate the value of $k_0$ with the sequence in order to calculate the
+value of $x_n$. By using this sequence, we get an infinite set of values of the number $x_n$
+which respect the fact that $3\times x_n+1=2^{p}$. However, we remark that the natural number
+$p$ is even for all the calculated values of the number $x_n$. This means that we should make
+the following arithmetic investigation about the natural number $p$. We have
+\begin{equation}
+2^{p}\bmod 3=(2-3i)^{p}\bmod 3\quad\text{for any natural number }i.
+\end{equation}
+For $i=1$, we have
+\begin{equation}
+2^{p}\bmod 3=(-1)^{p}\bmod 3
+\end{equation}
+However, we have $3\times x'=2^{p}-1$, where $x'$ is an odd natural number, which means that
+we have
+\begin{equation}
+2^{p}\equiv 1\bmod 3
+\end{equation}
+Consequently, we have always
+\begin{equation}
+(-1)^{p}\equiv 1\bmod 3
+\end{equation}
+And this is only possible when $p$ is an even number.
+
+We conclude that the proposed sequence is a good method to calculate all the values of
+$\frac{2^{2\times M}-1}{3}$, where $M$ is a strictly positive natural number, with only an
+easy summation by considering that $k_{p-1}=0$ and without any divisions. This method can
+also be very useful for the study of the second form of the numbers that respect the Collatz
+conjecture.
+
+%==========================================================================
+\section*{Declarations}
+\begin{description}
+\item[Ethical Approval:] this declaration is ``not applicable''.
+\item[Competing interests:] this declaration is ``not applicable''.
+\item[Authors' contributions:] this declaration is ``not applicable''.
+\item[Funding:] this declaration is ``not applicable''.
+\item[Availability of data and materials:] this declaration is ``not applicable''.
+\end{description}
+
+\section*{Disclosure}
+\begin{description}
+\item[Merged articles:] This article is a merger of two earlier manuscripts by the same
+author: \citet{LouizEquivalent} (all sections except Section~7, and the appendix) and
+\citet{LouizLetter} (Section~7), both building on \citet{Louiz2024}. Their text, formulas and results are
+reproduced here, with only minimal editing for continuity; no new mathematical result has
+been added.
+\item[Use of AI:] The AI assistant Claude (Anthropic) was used only for the technical work of
+the merger: combining the two sources, converting them to \LaTeX, checking equation by
+equation that the formulas match the sources, and writing the short connecting sentences,
+the title and the notices of this disclosure. It was not used to create or change the
+mathematical content. The author is responsible for the whole article.
+\end{description}
+
+\begin{thebibliography}{9}
+\bibitem[{Andrei and Masalagiu(1998)}]{AndreiMasalagiu}
+Andrei, {\c S}., \& Masalagiu, C. (1998). About the Collatz conjecture.
+\emph{Acta Informatica}, \emph{35}, 167--179.
+\bibitem[{Louiz(n.d.-a)}]{LouizEquivalent}
+Louiz, A. (n.d.-a). \emph{Arithmetic statements equivalent to the proof of the Collatz
+conjecture} [Preprint]. ResearchGate. \url{https://doi.org/10.13140/RG.2.2.22861.41444}
+\bibitem[{Louiz(n.d.-b)}]{LouizLetter}
+Louiz, A. (n.d.-b). \emph{A mathematical letter that disproves by contradiction the Collatz
+conjecture} [Preprint]. ResearchGate. \url{https://doi.org/10.13140/RG.2.2.28997.56802}
+\bibitem[{Louiz(2024)}]{Louiz2024}
+Louiz, A. (2024). Recurrences of sequences of the Collatz conjecture and the only five
+forms of numbers that satisfy this conjecture. \emph{Universal Journal of Mathematics and
+Mathematical Sciences}, \emph{20}(2), 143--152. \url{https://doi.org/10.17654/2277141724008}
+\bibitem[{Ren(2019)}]{Ren}
+Ren, W. (2019). A new approach on proving Collatz conjecture. \emph{Journal of
+Mathematics}, \emph{2019}.
+\end{thebibliography}
+
+\end{document}
