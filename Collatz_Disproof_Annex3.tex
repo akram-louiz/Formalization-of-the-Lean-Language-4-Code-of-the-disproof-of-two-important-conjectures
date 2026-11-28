@@ -1,0 +1,807 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0.7em}
+% Each equation of the source that was lost in the text export is marked
+% by a numbered placeholder \fph{k} (k = order of appearance in the source text).
+\newcommand{\fph}[1]{\mbox{\fbox{\scriptsize\textsf{formula~#1}}}}
+\title{A study of the forms of numbers that satisfy the Collatz conjecture leading to a disproof of the conjecture.}
+\author{Akram Louiz\\[2pt] Independent researcher, Settat, Morocco.\\ \href{mailto:louiz.akram@gmail.com}{louiz.akram@gmail.com}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Congratulations to the ones who believed that the logic and the modern mathematical tools can be enough in order to develop solutions for any complicated mathematical problem, especially the Collatz conjecture.
+
+We could use previous published short works in establishing an easy approach in the study of the Collatz conjecture by using simple recurrences. Those results and many other are being applied in this article in order to propose methods and simple arithmetic statements which are equivalent to the proof of the famous Collatz conjecture. Furthermore, thanks to those results, we could end this article by a disproof by contradiction for the Collatz conjecture. I hope that this article helps the lovers of sequences and number theory in understanding new aspects of this conjecture that still deserves studying despite the disproof.
+\end{abstract}
+Keywords : Collatz conjecture, Syracuse, sequence, process, recurrence, even, odd, expression, natural numbers, solution, form, equivalent proof, unique, disproof.
+
+
+\section*{1. Introduction:}
+
+Many works still try to explain the meanings and the consequences of the Collatz conjecture [1], whereas other works propose new approaches in studying this problem [2]. And thus, we have the right to believe that the field of mathematics has all the tools to find solution of arithmetic problems such as the Collatz conjecture. We carry on consequently in our previous efforts in proposing new results [3] in order to better explain the aspects of this conjecture and in order to collaborate with all the lovers of mathematics who dream of finding a solution for the Collatz conjecture.
+
+In our previous work [3], we concluded for \fph{1} that all the natural numbers \fph{2} which respect the Collatz conjecture can be expressed in at least one of these five forms:
+
+-The first form is: \fph{3}
+
+-The second form is: \fph{4} since the recurrence relation demonstrated above is only for and this is the case for n=0.
+
+-The third form is: \fph{5} since the recurrence relation demonstrated above is only for \fph{6} and this is the case for n=1. We have in this expression \fph{7} can be any natural number with: \fph{8}.
+
+-The fourth form is: \fph{9} where n can be any even natural number with \fph{10} and the numbers \fph{11} can be any natural numbers which respect that \fph{12} and respect that: \fph{13} where M can be any strictly positive natural number.
+
+-The fifth form is: \fph{14} where n can be any odd natural number with \fph{15} and the numbers \fph{16} can be any natural numbers which respect that \fph{17} and respect that: \fph{18} where M can be any strictly positive natural number.
+
+We also concluded that we can prove that the Collatz conjecture is always true if we prove that all the natural numbers can be expressed in these five forms demonstrated above only.
+
+We proposed that the artificial intelligence and many mathematics software can simplify this task of proving that all the natural numbers can be expressed in these five forms demonstrated above only. However, we work in this article without the help of computers in order to simplify even more the results of the previous article [3] that form the basis of the present work.
+
+In this article, we prove that all the numbers that respect the Collatz conjecture respect two final forms that are:
+
+- First final form: \fph{19} with \fph{20} is an odd natural number and N is a natural number with \fph{21},
+
+-Second final form: \fph{22} with \fph{23} is an even natural number and M is a natural number with \fph{24}.
+
+And here, the numbers \fph{25} and the numbers \fph{26} are all the natural numbers which respect the Collatz conjecture and the numbers \fph{27} can be any natural numbers which respect that \fph{28} and respect that: \fph{29} where A can be any strictly positive natural number.
+
+We prove also that the number N or M are not unique in both expressions. In fact, we proved in the part about the uniqueness of the forms in this article that if we have:
+
+\fph{30} then we have also:
+
+\fph{31} where M is another natural number with \fph{32} and the numbers \fph{33} are natural numbers which respect that \fph{34} and respect that: \fph{35} where M’ is a strictly positive natural number and we have: \fph{36} for \fph{37} and \fph{38} for any natural number k with \fph{39}.
+
+This means that we can build an infinity of other different expressions of the first final form for this same number \fph{40} . Consequently, the first final form expression of the number \fph{41} is not unique. Furthermore, we prove that it is sufficient to prove that all odd natural numbers respect the first final form in order to prove the Collatz conjecture.
+
+These results have been consequently applied and used in order to establish a contradiction that disproves directly the Collatz conjecture.
+
+In this work, we propose also @@K0\_0@@ proves that each natural number \fph{42} has many corresponding odd natural numbers \fph{43} that respect the Collatz conjecture and we prove a method to find an odd natural number that has a specific number N in its first final form and we added an annex with a new method to calculate all the possible values of a natural number: \fph{44} since the proposed algorithm is useful without any divisions just by using the proposed demonstrated sequence.
+
+
+\section*{2. About the uniqueness of the expressions of the fifth and fourth forms for any given natural number:}
+
+Let’s start our proof by considering that we have two different expressions of the fifth form for a same number \fph{45} which is a number of the fifth form, then we have:
+
+\fph{46} and also: \fph{47} where m is another odd natural number with \fph{48} and the numbers \fph{49} are natural numbers which respect that \fph{50} and respect that: \fph{51} where M’ is a strictly positive natural number.
+
+In this case we have two different “procedures” of the Collatz conjecture for the same even natural number number \fph{52}. Hence, by using the two equations, we can divide \fph{53} by \fph{54} in order to get an odd number as a result and we can also divide \fph{55} by \fph{56} in order to get an odd number as a result. This means obviously that \fph{57}\hfill (1)
+
+since the even natural number \fph{58} is the same in the two equations, and we get these two equations as a result after our division:
+
+equation 1: \fph{59}\hfill (2)
+
+equation 2: \fph{60}.\hfill (3)
+
+Now by using these two equations, we can divide again \fph{61} by \fph{62} in order to get an odd number as a result and we can also divide \fph{63} by \fph{64} in order to get an odd number as a result.
+
+However, we proved above that: \fph{65} .\hfill (4)
+
+And thus, this means that we have also: \fph{66} .\hfill (5)
+
+We can carry on with the same steps till we prove that : \fph{67} for any natural number A with \fph{68}.\hfill (6)
+
+Consequently, even if the natural number \fph{69} that is a number of the fifth form has two different expressions of the fifth form, we remark in these different expressions that the numbers \fph{70} and \fph{71} (that are the powers of two) are identical in both expressions starting from \fph{72} until \fph{73} (by variating the index A).
+
+Hence, we must calculate the numbers \fph{74} separately for \fph{75}.
+
+We have: \fph{76}\hfill (7)
+
+Hence: \fph{77}\hfill (8)
+
+Consequently: \fph{78}\hfill (9)
+
+And we have: \fph{79}\hfill (10)
+
+And since we proved that : \fph{80} for any natural number k with \fph{81}\hfill (11)
+
+then we get this equation: \fph{82}\hfill (12)
+
+Consequently, we have: \fph{83}\hfill (13)
+
+However, we proved above also that: \fph{84}\hfill (14)
+
+And thus, we get: \fph{85} and \fph{86} for \fph{87}\hfill (15)
+
+And since we have: \fph{88}\hfill (16)
+
+this means that: \fph{89} for any natural number k with \fph{90}\hfill (17)
+
+Finally, we conclude that, if the natural number \fph{91} that is a number of the fifth form has two different expressions of the fifth form:
+
+\fph{92} and also: \fph{93} where m is another odd natural number with \fph{94}. Then we remark in these different expressions that the numbers \fph{95} and \fph{96} (that are the powers of two) are identical in both expressions for \fph{97} for any natural number k with \fph{98}. And we have also \fph{99} for \fph{100}.
+
+This result doesn’t mean only that two different expressions of the fifth form are possible for the same natural number \fph{101}, but it means also that in order to find a second expression of the fifth form for a number \fph{102} that has an expression of the fifth form that is: \fph{103} , then we can follow the following process by considering an odd natural number m with m>n:
+
+We proved above this remarkable identity: \fph{104}\hfill (18)
+
+Hence, we have: \fph{105} (19) We consider now that: \fph{106} for \fph{107} and \fph{108} for any natural number k with \fph{109} .\hfill (20)
+
+Consequently we have: \fph{110}\hfill (21)
+
+Hence: \fph{111}\hfill (22)
+
+And thus: \fph{112}\hfill (23)
+
+Hence: \fph{113}\hfill (24)
+
+And thus, we have: \fph{114}\hfill (25)
+
+Finally, we conclude that: \fph{115}\hfill (26)
+
+And this means that the second expression of the fifth form form for the natural number \fph{116} is:
+
+\fph{117} where m is another odd natural number with \fph{118} and the numbers \fph{119} are natural numbers which respect that \fph{120} and respect that: \fph{121} where M’ is a strictly positive natural number since we have: \fph{122} for \fph{123} and \fph{124} for any natural number k with \fph{125} .\hfill (27)
+
+We can conclude that for an even number \fph{126} that respects the expression of the fifth form, we can build an infinity of other different expressions of fifth form for this same number \fph{127} . Consequently, the fifth form expression of the number \fph{128} is not unique but we can choose the fifth form expression of the form \fph{129} where m is the smallest possible natural number.
+
+And by making a similar proof, we can also make the same remark for any odd natural number \fph{130} that is a number of the fourth form with two different expressions of the fourth form or more. We only have to start the proof by considering and using an even natural number \fph{131}\hfill (28)
+
+since we have: \fph{132}.\hfill (29)
+
+
+\section*{3. The proof that the first form of the numbers which respect the Collatz conjecture is included in the fifth form:}
+
+Let’s consider that n is an odd natural number with n>2 and that M is a strictly positive natural number.
+
+We have: \fph{133}\hfill (30)
+
+Hence, we have: \fph{134}\hfill (31)
+
+Consequently: \fph{135}\hfill (32)
+
+We repeat the same method for \fph{136}\hfill (33)
+
+Hence, we get: \fph{137}\hfill (34)
+
+Consequently, we have: \fph{138}\hfill (35)
+
+We repeat the same method for \fph{139}\hfill (36)
+
+Hence, we get: \fph{140}\hfill (37)
+
+Consequently, we have:
+
+\fph{141}\hfill (38)
+
+And thus we can guess the following recurrence relation:
+
+\fph{142}\hfill (39)
+
+Let’s prove this recurrence relation:
+
+For n=3 we have: \fph{143}\hfill (40)
+
+And also for n=3 we have: \fph{144}\hfill (41)
+
+Hence, we have: \fph{145}\hfill (42)
+
+And thus, for n=3 we respected that: \fph{146}.\hfill (43)
+
+Now let’s consider that this recurrence relation is correct until the number n and let’s prove it correct for n+2 since n can only be an odd number.
+
+We have: \fph{147}\hfill (44)
+
+Consequently: \fph{148}\hfill (45)
+
+And we have: \fph{149}\hfill (46)
+
+And thus, we have: \fph{150}\hfill (47)
+
+And this is equivalent to: \fph{151}\hfill (48)
+
+Hence, we proved that: \fph{152}\hfill (49)
+
+And this means that our recurrence relation is correct also for n+2.
+
+We conclude that the recurrence relation \fph{153} is correct for any odd natural number n with n>2 and for any strictly positive natural number M.
+
+Also, by substituting with j-1 in the series of our recurrence relation, we get:
+
+\fph{154}.\hfill (50)
+
+This result can also be made by using the remarkable identity of: \fph{155} .
+
+We remark that this equation can be equivalent to the fifth form of the numbers which respect the Collatz conjecture and which have this form: \fph{156}.\hfill (51)
+
+And in this case, we have this equation: \fph{157}\hfill (52)
+
+and we have also this equation: \fph{158} for any natural number j with: .\hfill (53)
+
+However, in this case, we should respect the fact that the numbers \fph{159} can only be natural numbers which respect that \fph{160} and respect that: \fph{161} where N0 can be any strictly positive natural number.
+
+Hence, since we should have: \fph{162} , then we should have: \fph{163}\hfill (54)
+
+And this means that we should have: \fph{164} for any natural number j with: \fph{165}\hfill (55)
+
+Hence, we should have \fph{166} for any natural number j with: \fph{167} .\hfill (56)
+
+We have: \fph{168}\hfill (57)
+
+And for any natural number j with: \fph{169} ,\hfill (58)
+
+we have: \fph{170} since M>0.\hfill (59)
+
+Consequently, we have always: \fph{171},\hfill (60)
+
+and this means that we respect indeed that for any natural number j with: \fph{172} , we have:
+
+\fph{173}\hfill (61)
+
+We can remark also that for j=1 we have: \fph{174}\hfill (62)
+
+Consequently we respected also that is an even number.
+
+We can remark also that for we have: \fph{175}\hfill (63)
+
+Finally, we conclude that all the natural numbers which respect the first form of the numbers which respect the Collatz conjecture and which have this form: \fph{176} respect also the fifth form which is: \fph{177} where n is odd and n>2.
+
+However, this result doesn’t mean that \fph{178} should be transformed to the number \fph{179} of the Collatz conjecture process after exactly n operations as explained in the previous article [3] since we should only divide \fph{180} by a power of two in order to reach the number 1 of the Collatz conjecture. Furthermore, in this case, the representation of the natural number \fph{181} with the fifth form is not unique since the natural number n can take any odd value with n>2.
+
+
+\section*{4. The proof that the second form of the numbers which respect the Collatz conjecture is included in the fourth form:}
+
+We proved that: \fph{182}\hfill (64)
+
+Where: \fph{183} and \fph{184} and M can be any strictly positive natural number and n is an odd natural number.
+
+And thus, we have also:
+
+\fph{185}\hfill (65)
+
+Where: \fph{186} and \fph{187}\hfill (66)
+
+And we know that: \fph{188}\hfill (67)
+
+Hence, we have: \fph{189}\hfill (68)
+
+We have n+1 is an even number. Let’s consider that m=n+1 and we have m>3.
+
+We have: \fph{190}\hfill (69)
+
+We remark that this equation can be equivalent to the fourth form of the numbers which respect the Collatz conjecture and which have this form: \fph{191}\hfill (70)
+
+And in this case, we have this equation: \fph{192}\hfill (71)
+
+and we have also this equation: \fph{193} for any natural number j with: \fph{194}\hfill (72)
+
+We have also: \fph{195} and \fph{196} .\hfill (73)
+
+Like the previous case, we should have for any natural number j with: \fph{197}:
+
+\fph{198}\hfill (74)
+
+We have: \fph{199}\hfill (75)
+
+And for any natural number j with: \fph{200} ,
+
+we have: \fph{201} since M>0.\hfill (76)
+
+Consequently, we have always: \fph{202},\hfill (77)
+
+and this means that we respect indeed that: \fph{203} for any natural number j with: \fph{204} .
+
+Finally, we conclude that all the natural numbers which respect the second form of the numbers which respect the Collatz conjecture and which have this form: \fph{205} respect also the fourth form which is: \fph{206} with m is even and m>3.
+
+However, this result doesn’t mean that \fph{207} should be transformed to the number \fph{208} of the Collatz conjecture process after exactly m operations as explained in the previous article [3] since we have already \fph{209} without any operations related to the process of the Collatz conjecture. Furthermore, in this case, the representation of the natural number \fph{210} with the fourth form is not unique since the natural number m can take any even value with m>3.
+
+
+\section*{5. The proof that the third form of the numbers which respect the Collatz conjecture is included in the fifth form:}
+
+We proved that: \fph{211}\hfill (78)
+
+Where: \fph{212} and \fph{213} and M can be any strictly positive natural number and m=n+1 is an even natural number with m>3. Let’s consider that p is a strictly positive natural number.
+
+And thus, we have also: \fph{214}\hfill (79)
+
+Consequently, we have: \fph{215}\hfill (80)
+
+Let’s consider that: \fph{216} where L is an odd natural number with L>4.\hfill (81)
+
+We get: \fph{217}\hfill (82)
+
+Let’s consider that: \fph{218} and since the number p is added to the powers of all the numbers \fph{219} for any natural number j with: \fph{220} , then we remark that this equation can be equivalent to the fifth form of the numbers which respect the Collatz conjecture and which have this form:
+
+\fph{221}\hfill (83)
+
+And in this case, we have this equation: \fph{222} and we have also these equations: \fph{223} for any natural number j with: \fph{224} and \fph{225} .\hfill (84)
+
+We can also remark in this case that: \fph{226} and like the previous cases, we should have \fph{227} for any natural number j with: \fph{228}.\hfill (85)
+
+We have: \fph{229}\hfill (86)
+
+And for any natural number j with: \fph{230} , we have:
+
+\fph{231} since M>0 and p>0.\hfill (87)
+
+Consequently, we have always: \fph{232}, and since we have p>0 then this means that we respect indeed that: \fph{233} for any natural number j with: \fph{234} .\hfill (88)
+
+Finally, we conclude that all the natural numbers which respect the third form of the numbers which respect the Collatz conjecture and which have this form: \fph{235} with p>0 respect also the fifth form which is: \fph{236} with L is odd and L>4.
+
+However, this result doesn’t mean that \fph{237} should be transformed to the number \fph{238} of the Collatz conjecture process after exactly L operations as explained in the previous article [3] since only one operation of division by \fph{239} transforms \fph{240} to \fph{241} in the process of the Collatz conjecture. Furthermore, in this case, the representation of the natural number \fph{242} with the fifth form is not unique since the natural number L can take any odd value with L>4.
+
+
+\section*{6. Proving that simple arithmetic statements are equivalent to the proof of the Collatz conjecture:}
+
+We could prove that all the strictly positive natural numbers which respect the Collatz conjecture can all be expressed with only the following two simplified forms which are:
+
+-The first final form: \fph{243}\hfill (89)
+
+with N is a natural number with \fph{244}.
+
+-And the second final form: \fph{245}\hfill (90)
+
+with M is a natural number with \fph{246}.
+
+Where the numbers \fph{247} and the numbers \fph{248} are all the natural numbers which respect the Collatz conjecture and the numbers \fph{249} can be any natural numbers which respect that \fph{250} and respect that: \fph{251} where A can be any strictly positive natural number.
+
+We remarked that for any natural number \fph{252} or \fph{253} that can be expressed in the first form or in the second form or in the third form described in the introduction and in the previous article [3], the expression of this natural number \fph{254} or \fph{255} is not unique in the fourth or in the fifth form because we can use in that representation any natural number N or M with \fph{256} and \fph{257}.
+
+And we know that in order to prove the Collatz conjecture we should only prove that each strictly positive natural number can be expressed with one of these two simplified final forms. However, we can remark in the first final form that \fph{258} should be an odd natural number, whereas we can remark in the second final form that \fph{259} should be an even natural number. And thus, in order to prove the Collatz conjecture we should only prove that each strictly positive odd natural number can be expressed with the first final form and that each strictly positive even natural number can be expressed with the second final form.
+
+We can remark that if \fph{260} is a strictly positive even natural number with \fph{261} then \fph{262} where \fph{263} is a strictly positive odd natural number and p is a strictly positive natural number. And if \fph{264} can be expressed with the first final form, then we have:
+
+\fph{265}\hfill (91)
+
+And this means that: \fph{266}\hfill (92)
+
+And this is equivalent to: \fph{267}\hfill (93)
+
+Where: \fph{268}.\hfill (94)
+
+And since we proved that all the numbers of the form \fph{269} can be expressed with the second final form, then we conclude finally that, in order to prove the Collatz conjecture, we should only prove that each strictly positive odd natural number can be expressed with the first final form which is: \fph{270} with N is a natural number with \fph{271}.
+
+Where \fph{272} is the studied strictly positive odd natural number and the numbers \fph{273} can be any natural numbers which respect that \fph{274} and respect that: \fph{275} where A can be any strictly positive natural number.
+
+
+\section*{7. The contradiction disproving the Collatz conjecture:}
+
+We proved above that, in order to prove the Collatz conjecture, we should only prove that each strictly positive odd natural number can be expressed with the first final form which is: \fph{276} with N is a natural number with \fph{277}\hfill (95)
+
+Where \fph{278} is the studied strictly positive odd natural number and the numbers \fph{279} can be any natural numbers which respect that \fph{280} and respect that: \fph{281} where A can be any strictly positive natural number.
+
+We proved also in the part about the uniqueness of the forms that if we have:
+
+\fph{282} then we have also:
+
+\fph{283} where M is another natural number with \fph{284} and the numbers \fph{285} are natural numbers which respect that \fph{286} and respect that: \fph{287} where M’ is a strictly positive natural number and we have: \fph{288} for \fph{289} and \fph{290} for any natural number k with \fph{291}.\hfill (96)
+
+We can conclude that for an odd number \fph{292} that respects the expression of the first final form, if N is the smallest natural number that satisfies \fph{293} then all the other expressions of the first final form of this same number \fph{294} are with M=N+O where O can be any strictly positive natural number and we have also: \fph{295} and the numbers \fph{296} are natural numbers which respect that \fph{297} and respect that: \fph{298} where M’ is a strictly positive natural number and we have: \fph{299} for \fph{300} and \fph{301} for any natural number k with \fph{302}.\hfill (97)
+
+This means that we can build an infinity of other different expressions of the first final form for this same number \fph{303} . Consequently, the first final form expression of the number \fph{304} is not unique.
+
+In this short article, we consider that the sets of numbers \fph{305} and \fph{306} respect both of them the Collatz conjecture with: \fph{307}\hfill (98)
+
+and: \fph{308}.\hfill (99)
+
+This implies in this case that in the expressions of the first final form if \fph{309} then we have:
+
+\fph{310} and \fph{311} with \fph{312} for \fph{313}.\hfill (100)
+
+This fact implies a contradiction that proves that the Collatz conjecture is not true for all strictly positive natural numbers.
+
+Let’s consider that: \fph{314} where \fph{315} is a natural number that respects the Collatz conjecture and B is a natural number with \fph{316}.\hfill (101)
+
+Let’s consider also that: \fph{317} where \fph{318} respects the Collatz conjecture too.\hfill (102)
+
+This implies that qN=1 in the expression of the first final form because \fph{319} is only divisible by 2 and not 4.
+
+We should remember that: \fph{320} and \fph{321} with A is a strictly positive natural number with A>1.\hfill (103)
+
+Hence, the sets of numbers \fph{322} and \fph{323} are separate sets.
+
+Since M and N are not unique like we explained in introduction, then we can also make sure that M=N with N>2 in the two expressions of the first final form that we will use in this work.\hfill (104)
+
+We have also: \fph{324}.\hfill (105)
+
+And we have: \fph{325}.\hfill (106)
+
+And since we have qN=1 and M=N then we have:\fph{326}\hfill (107)
+
+And thus, we have: \fph{327}\hfill (108)
+
+Hence: \fph{328}\hfill (109)
+
+We consider that: \fph{329}. Consequently, by making a comparison of parity between the two sides of the equation above by dividing by the powers of two, we remark that: \fph{330}.\hfill (110)
+
+Hence, we get:
+
+\fph{331}\hfill (111)
+
+And thus:
+
+\fph{332} (112)
+
+However, if \fph{333} then we have \fph{334}\hfill (113)
+
+and we get:
+
+\fph{335}\hfill (114)
+
+Hence, when the natural numbers \fph{336} and \fph{337} respect both of them the Collatz conjecture with \fph{338} we have always \fph{339} and if \fph{340} then we have:
+
+\fph{341} and \fph{342} with \fph{343} for \fph{344}.\hfill (115)
+
+
+\subsection*{The contradictions implied by the useful result of the consideration:}
+
+The readers could guess and make sure that the special case of B=25 represents a direct contradiction that disproves the result above and thus disproves the Collatz conjecture. However, we will carry on our work instead with simple logical steps to establish the disproof without difficult guessing.
+
+Let’s consider that the natural numbers of the forms \fph{345} and \fph{346} respect all of them the Collatz conjecture with \fph{347} and let’s consider that: \fph{348}. We get consequently:
+
+\fph{349}\hfill (116)
+
+This means that: \fph{350}\hfill (117)
+
+And we have also:
+
+\fph{351}\hfill (118)
+
+This means that: \fph{352}\hfill (119)
+
+However, we have also: \fph{353} for \fph{354}.\hfill (120)
+
+Hence: \fph{355}\hfill (121)
+
+We get consequently: \fph{356}\hfill (122)
+
+We remark that: \fph{357}\hfill (123)
+
+but we have also: \fph{358}.\hfill (124)
+
+We conclude that this is a contradiction. And thus, we have always: \fph{359}.\hfill (125)
+
+This means that, when the separate sets of numbers \fph{360} and \fph{361} with B>0 respect both of them the Collatz conjecture, we have always:
+
+\fph{362}\hfill (126)
+
+Hence, we have: \fph{363}\hfill (127)
+
+for any natural number N with N>2 and for any natural number \fph{364} that respects that \fph{365} and respects that: \fph{366} where M’ is a strictly positive natural number.
+
+Since this result is true for any natural number N with N>4, we consider that L=N-2 and we get: \fph{367}
+
+for any natural number L with L>2 and for any natural number \fph{368} that respects that \fph{369} and respects that: \fph{370} where M’ is a strictly positive natural number.\hfill (128)
+
+This means that the natural numbers of the form \fph{371} don’t respect the Collatz conjecture.\hfill (129)
+
+We can guess that if \fph{372} then we have: \fph{373}\hfill (130)
+
+This implies that the natural number 7 doesn’t respect the Collatz conjecture. However, we have \fph{374} with C=2 and we considered that all the natural numbers of the form \fph{375} respect the Collatz conjecture. And thus, we can conclude that if \fph{376} and \fph{377} respect both of them the Collatz conjecture then this facts leads to a contradiction.
+
+And thus, we conclude that not all the odd natural numbers can respect the Collatz conjecture at the same time. We conclude finally that the Collatz conjecture is not true for all strictly positive natural numbers.
+
+Eureka: The Collatz conjecture is not true!!!
+
+« Quod erat demonstrandum »
+
+
+\section*{8. Annex 1: An infinite set of odd numbers respecting the first final form of the numbers of the Collatz conjecture:}
+
+Many may think that it is complicated to express any odd natural number with the first final form demonstrated in this article without the help of artificial intelligence or other mathematics software. However, we should know that there are many sequences and series of natural numbers which are equivalent to the set of the odd natural numbers and which can simplify this task. Furthermore, we can find many arithmetic developments of natural numbers which are easy recurrence relations. Hence, let’s give this example of recurrence relations which develops a natural number into a series:
+
+Lets’ consider a strictly positive natural number N. We will try to study the number \fph{378} in order to deduce a useful result.
+
+For N=1, we have: \fph{379}\hfill (131)
+
+For N=2, we have: \fph{380}\hfill (132)
+
+For N=3, we have: \fph{381}\hfill (133)
+
+We can guess the recurrence relation: \fph{382} .\hfill (134)
+
+Now let’s consider that this recurrence relation is correct until the number N and let’s prove it correct for N+1.
+
+We have: \fph{383}\hfill (135)
+
+And thus, we conclude that: \fph{384}\hfill (136)
+
+And this means that our recurrence relation \fph{385} is correct for any strictly positive natural number N.
+
+This recurrence relation is an example that develops a number into a sum of other numbers and it can be expressed also from @@K1\_0@@ the identity: \fph{386} . However, let’s use it in the following proof.
+
+Let’s consider that where B is a strictly positive natural number. We have \fph{387} is a natural number satisfying the @@K2\_0@@ \fph{388}\hfill (137)
+
+where N is a natural number with \fph{389}.
+
+And we proved above that: \fph{390}\hfill (138)
+
+where n is an odd natural number with n>2 and M is a strictly positive natural number.
+
+And thus, we have: \fph{391}\hfill (139)
+
+where B and N are strictly positive natural numbers with \fph{392} and \fph{393}.
+
+And we have: \fph{394} whereas we proved above that: \fph{395}\hfill (140)
+
+And thus, the infinite set of odd numbers which are \fph{396} where B can be any strictly positive natural number can all be expressed with the first final form which is:
+
+\fph{397}\hfill (141)
+
+where \fph{398} and N is natural number with \fph{399} by remarking that: \fph{400} where \fph{401}.\hfill (142)
+
+This demonstrated infinite set of odd numbers may serve as a basis in order to help the readers to prove that all the other odd natural numbers \fph{402} can be expressed with the first final form which is:
+
+\fph{403}\hfill (143)
+
+
+\subsection*{First corollary:}
+
+We will propose in this corollary a method to find an infinite amount of numbers which respect the Collatz conjecture by using the result above.
+
+Let’s consider that \fph{404} where C is a strictly positive natural number and B can be any strictly positive natural number.
+
+We have consequently: \fph{405}\hfill (144)
+
+Let’s consider that the new number \fph{406} respects the Collatz conjecture by respecting the first final form with: \fph{407}\hfill (145)
+
+where D is a strictly positive natural number.
+
+We have in this case: \fph{408} where \fph{409}.\hfill (146)
+
+And we have: \fph{410}\hfill (147)
+
+And thus, we have: \fph{411}\hfill (148)
+
+Let’s consider that: \fph{412} where E is a natural number.\hfill (149)
+
+Hence we get this equation: \fph{413}.\hfill (150)
+
+Now let’s try to find example of values for the natural numbers N and E and D which respect this equation.
+
+We can guess a first easy example of values which is: N=1 and E=7 and D=3. However, the number N is only interesting for us if \fph{414}.
+
+Hence, we guess a second interesting example of values which is: N=2 and E=9709 and D=9.\hfill (151)
+
+In this case, we have: \fph{415}\hfill (152)
+
+Now let’s verify if the new number \fph{416} really respects the first final form of the Collatz conjecture where we have: \fph{417} .\hfill (153)
+
+We have:
+
+\fph{418}\hfill (154)
+
+And we have:
+
+\fph{419}\hfill (155)
+
+And thus, we conclude that the set of all the numbers \fph{420} where B can be any strictly positive natural number respect the Collatz conjecture by respecting the first final form with: \fph{421} where N=2 and D=9.\hfill (156)
+
+Let’s prove also that \fph{422} can never be expressed by the second form of the numbers that respect the Collatz conjecture which is \fph{423}.
+
+In fact, we have: \fph{424}\hfill (157)
+
+And thus, we have always: \fph{425} . Consequently, the number \fph{426} can never be expressed by the second form of the numbers that respect the Collatz conjecture. And thus, the demonstrated expression of the first final form is correct for a specific value of N that is N=2 when we express each number of the set of numbers \fph{427} in the first final form.
+
+We should remind that we didn’t consider that all the odd numbers should respect @@K3\_0@@ \fph{428} because in the first final form of the Collatz conjecture, we may have: \fph{429} .\hfill (158)
+
+However, the readers may find other examples of values for N and E and D for different other sets of numbers \fph{430} which are sets of numbers that change with the natural number B and which respect the Collatz conjecture without the change of the value of N. Another more general study is described in the following corollary.
+
+
+\subsection*{Second corollary:}
+
+We consider like in the first corollary above a new strictly positive natural number \fph{431} with:
+
+\fph{432}\hfill (159)
+
+Let’s consider again that \fph{433} respects the Collatz conjecture by respecting the first final form with: \fph{434}\hfill (160)
+
+Like in the first corollary above, we have in this case: \fph{435} where \fph{436}.
+
+And we have: \fph{437}\hfill (161)
+
+And thus, we have: \fph{438}\hfill (162)
+
+Let’s consider again that: \fph{439} where E is a natural number.\hfill (163)
+
+Hence we get this equation: \fph{440}.\hfill (164)
+
+Let’s consider that: \fph{441} and we get this equation: \fph{442} .\hfill (165)
+
+This equation will be very useful if E is always a natural number. Let’s investigate about this equation by using the Fermat-Euler theorem:
+
+We have the number 2 is coprime to the number \fph{443} where N can be any strictly positive natural number with \fph{444}.
+
+And the Euler Totient Function of \fph{445} is: \fph{446}.\hfill (166)
+
+Hence, we have we have by the theorem: \fph{447}.\hfill (167)
+
+And thus, we proved that: \fph{448}.\hfill (168)
+
+We conclude that: \fph{449} is always a natural number.\hfill (169)
+
+And this means that: \fph{450} and \fph{451} are always solutions for the equation of this corollary which is \fph{452} where N can be any strictly positive natural number with \fph{453}.
+
+We have generally in this case: \fph{454} .\hfill (170)
+
+We consider like in the first corollary above that: \fph{455}\hfill (171)
+
+Now let’s verify if the new number \fph{456} really respects the first final form of the Collatz conjecture:
+
+We have:
+
+\fph{457}\hfill (172)
+
+And we know that: \fph{458}\hfill (173)
+
+Hence, we have: \fph{459}\hfill (174)
+
+And we have:
+
+\fph{460}\hfill (175)
+
+And we know that: \fph{461}\hfill (176)
+
+Hence, we have: \fph{462}\hfill (177)
+
+And thus, we conclude that the set of all the numbers \fph{463} where B can be any strictly positive natural number respect the Collatz conjecture by respecting the first final form with: \fph{464} where N can be any strictly positive number with: \fph{465}.
+
+Let’s prove that \fph{466} can never be expressed by the second form of the numbers that respect the Collatz conjecture which is \fph{467}.
+
+In fact, we have: \fph{468}\hfill (178)
+
+this is because the natural number \fph{469} is an odd number.\hfill (179)
+
+And thus, we have always: \fph{470} . Consequently, each number of the set \fph{471} can never be expressed by the second form of the numbers that respect the Collatz conjecture. And thus, when we express each number of the set of numbers \fph{472} with the demonstrated expression of the first final form, we use a specific value of N that changes by the change of \fph{473}.
+
+
+\section*{9. Annex 2 and reminder: About the sequence related to the second form of the numbers which respect the Collatz conjecture:}
+
+We proved in the previous work [3] a recurrence relation for natural numbers \fph{474} that is related to the second form of the numbers that respect the Collatz conjecture and especially to the operation \fph{475} that is the last operation of the collatz conjecture before the last p successive divisions by two.
+
+The number \fph{476} in this case is an odd number and \fph{477} is the last operation of the Collatz conjecture for \fph{478} before the last p successive divisions by two.\hfill (180)
+
+Hence, we consider that:
+
+\fph{479} where \fph{480} is a natural number.\hfill (181)
+
+We get consequently: \fph{481}\hfill (182)
+
+Hence, when \fph{482} we have: \fph{483}\hfill (183)
+
+This means that \fph{484} is an even natural number.
+
+And thus, we consider that: \fph{485} where \fph{486} is a natural number.\hfill (184)
+
+We get consequently: \fph{487}\hfill (185)
+
+Hence, when \fph{488} we have: \fph{489}\hfill (186)
+
+This means that \fph{490} is an odd natural number.
+
+We keep substituting the odd and even numbers \fph{491} by expressions of \fph{492} and we remark that \fph{493} is an even natural number and \fph{494} is an odd natural number, etc … and we remark the following recurrence relation that is easy to prove:
+
+\fph{495} if n is an even natural number\hfill (187)
+
+and \fph{496} if n is an odd natural number.\hfill (188)
+
+We know that if p=4 then \fph{497}
+
+And thus: \fph{498} .\hfill (189)
+
+And we can verify that: \fph{499}.\hfill (190)
+
+Consequently, we remark that from this recurrence relation, we can conclude the following sequence of natural numbers \fph{500} which respects that:
+
+\fph{501} and \fph{502} where \fph{503} is a sequence defined by \fph{504} if n is even and by \fph{505} if n is odd.\hfill (191)
+
+Furthermore, this sequence of natural numbers respects the fact that: \fph{506}.
+
+And thus, we can use this sequence starting by n=N where \fph{507} . We have in this case N=p-1 and we can calculate the value of \fph{508} with the sequence in order to calculate the value of \fph{509}.
+
+By using this sequence, we get an infinite set of values of the number \fph{510} which respect the fact that: \fph{511} .
+
+However, we remark that the natural number p is even for all the calculated values of the number \fph{512}. This means that we should make the following arithmetic investigation about the natural number p:
+
+We have: \fph{513} for any natural number i.\hfill (192)
+
+For i = 1, we have: \fph{514}\hfill (193)
+
+However, we have \fph{515} where x’ is an odd natural number which means that we have:
+
+\fph{516}\hfill (194)
+
+Consequently, we have always: \fph{517}\hfill (195)
+
+And this is only possible when p is an even number.
+
+We conclude that the proposed sequence is a good method to calculate all the values of \fph{518} where M is a strictly positive natural number with only an easy summation by considering that \fph{519} and without any divisions. This method can also be very useful for the study of the second form of the numbers that respect the Collatz conjecture.
+
+
+\section*{10. Summary and conclusion:}
+
+We started this work by proving thanks to a recurrence relation that all the natural numbers which respect the first form of the numbers which respect the Collatz conjecture and which have this form: \fph{520} respect also the fifth form which is: \fph{521}.
+
+We deduced then that all the natural numbers which respect the second form of the numbers which respect the Collatz conjecture and which have this form: \fph{522} respect also the fourth form which is: \fph{523}.
+
+We deduced also that all the natural numbers which respect the third form of the numbers which respect the Collatz conjecture and which have this form: \fph{524} with p>0 respect also the fifth form which is: \fph{525}.
+
+We concluded that the proof of the Collatz conjecture is equivalent to proving that each strictly positive odd natural number can be expressed with the first final form which is:
+
+\fph{526} with N is a natural number with \fph{527}, and that each strictly positive even natural number can be expressed with the second final form which is: \fph{528} with M is a natural number with \fph{529}.
+
+And here, the numbers \fph{530} and the numbers \fph{531} are all the natural numbers which respect the Collatz conjecture and the numbers \fph{532} can be any natural numbers which respect that \fph{533} and respect that: \fph{534} where A can be any strictly positive natural number.
+
+However, we finally concluded that, in order to prove the Collatz conjecture, we should only prove that each strictly positive odd natural number can be expressed with the first final form which is: \fph{535} with N is a natural number with \fph{536}.
+
+Where \fph{537} is the studied strictly positive odd natural number and the numbers \fph{538} can be any natural numbers which respect that \fph{539} and respect that: \fph{540} where A can be any strictly positive natural number.
+
+We proved also in this article in the part about the uniqueness of the forms that if we have:
+
+\fph{541} then we have also:
+
+\fph{542} where M is another natural number with \fph{543} and the numbers \fph{544} are natural numbers which respect that \fph{545} and respect that: \fph{546} where M’ is a strictly positive natural number and we have: \fph{547} for \fph{548} and \fph{549} for any natural number k with \fph{550}.
+
+We can conclude that for an odd number \fph{551} that respects the expression of the first final form, if N is the smallest natural number that satisfies \fph{552} then all the other expressions of the first final form of this same number \fph{553} are with M=N+O where O can be any strictly positive natural number and we have also: \fph{554} and the numbers \fph{555} are natural numbers which respect that \fph{556} and respect that: \fph{557} where M’ is a strictly positive natural number and we have: \fph{558} for \fph{559} and \fph{560} for any natural number k with \fph{561}.
+
+This means that we can build an infinity of other different expressions of the first final form for this same number \fph{562}.
+
+Furthermore, for the disproof of the Collatz conjecture, we considered that the separate sets of numbers \fph{563} and \fph{564} where B>0 respect both of them the Collatz conjecture with with: \fph{565} and: \fph{566}.
+
+This consideration implied that we have always by using the expressions of the first final form \fph{567} and if \fph{568} then we have: \fph{569} and \fph{570} with \fph{571} for \fph{572}.
+
+After that, we proved that if \fph{573} whereas the separate sets of numbers \fph{574} and \fph{575} respect the Collatz conjecture, then this fact leads to a contradiction.
+
+Finally, we concluded that the Collatz conjecture can’t be true for all strictly positive natural numbers.
+
+We added after that a corollary to this article where we proved infinite set of odd numbers which respect the Collatz conjecture:
+
+-The first general set of numbers is: \fph{576} where B can be any strictly positive natural number and N is not unique. Furthermore, as a first corollary, we proposed a method in order to deduce other related infinite set of numbers respecting the Collatz conjecture by using specific values of the natural number N. The proposed set of odd numbers which respect the Collatz conjecture is: \fph{577} where B can be any strictly positive natural number and N is specific with N=2.
+
+-The study in the second corollary is more general and we could conclude for each natural number \fph{578} a set of numbers respecting the Collatz conjecture by using specific values of the natural number N. The proposed set of odd numbers which respect the Collatz conjecture is: \fph{579} where B and N can be any strictly positive natural number with \fph{580}.
+
+And we have: \fph{581}.
+
+@@K4\_0@@ that each natural number \fph{582} has many corresponding odd natural numbers \fph{583} that respect the Collatz conjecture. However, we remark that these odd numbers grow rapidly and this means that we may need big calculators in order to use this \fph{584}.
+
+Finally, we should remind that if we want to prove that each strictly positive odd natural number \fph{585} can be expressed with the first final form, then we should remember that the natural number N is not a constant for all the numbers \fph{586} and is not unique for a given natural number \fph{587} but we can choose the smallest possible natural number N for each natural number \fph{588}.
+
+And thus, using a simple recurrence relation for the proof of the Collatz conjecture is not an easy task at all. Furthermore, the set of numbers \fph{589} demonstrated in the second corollary above proves that the natural numbers N don’t increase always when the odd natural number \fph{590} increases since B can be any strictly positive natural number.
+
+Consequently, for a further study of which strictly positive odd natural number \fph{591} can be expressed with the first final form, we propose to use a sequence \fph{592} where k can be any strictly positive natural number and we will have to prove that:
+
+\fph{593} where \fph{594} is a sequence of natural numbers that depends only on the natural number k.
+
+We have always: \fph{595} where N depends on each natural number k by using the sequence Clz and we have always: \fph{596} and B can be any strictly positive natural number.
+
+In the annex we added also a new method to calculate all the possible values of natural number: \fph{597} and the proposed algorithm is useful without any divisions just by using the proposed demonstrated sequence.
+
+Despite the disproof, the Collatz conjecture remains an interesting subject of mathematics and the researchers may also focus now on finding the first counterexample of the Collatz conjecture!
+
+
+\section*{Declarations:}
+
+Ethical Approval:
+
+this declaration is “not applicable”.
+
+Competing interests:
+
+this declaration is “not applicable”.
+
+Authors' contributions:
+
+this declaration is “not applicable”.
+
+Funding:
+
+this declaration is “not applicable”.
+
+Availability of data and materials:
+
+this declaration is “not applicable”.
+
+
+\section*{References:}
+
+[1] Andrei, Ş., \& Masalagiu, C. (1998). About the Collatz conjecture. Acta Informatica, 35, 167-179.
+
+[2] Ren, W. (2019). A new approach on proving Collatz conjecture. Journal of Mathematics, 2019.
+
+[3] Louiz, A. (2024). RECURRENCES OF SEQUENCES OF THE COLLATZ CONJECTURE AND THE ONLY FIVE FORMS OF NUMBERS THAT SATISFY THIS CONJECTURE. Universal Journal of Mathematics and Mathematical Sciences, 20(2), 143–152. \href{https://doi.org/10.17654/2277141724008}{https://doi.org/10.17654/2277141724008}
+
+\end{document}
